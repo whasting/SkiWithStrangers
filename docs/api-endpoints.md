@@ -20,4 +20,24 @@
 
 ### Events
 
+- `GET /api/events`
+- `POST /api/events`
+- `GET /api/events/:id`
+- `PATCH /api/events/:id`
+- `DELETE /api/events/:id`
+
 ### Hosts
+
+- `GET /api/hosts`
+- `POST /api/hosts`
+- `GET /api/hosts/:id`
+- `PATCH /api/hosts/:id`
+- `DELETE /api/hosts/:id`
+
+### Resorts
+
+- `GET /api/resorts`
+- `POST /api/resorts`
+- `GET /api/resorts/:id`
+- `PATCH /api/resorts/:id`
+- `DELETE /api/resorts/:id`

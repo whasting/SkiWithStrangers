@@ -6,9 +6,9 @@ column name     | data type | details
 id              | integer   | not null, primary key
 username        | string    | not null, indexed, unique
 email           | string    | not null, indexed, unique
+name            | string    | not null
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
-is_host         | string    | not null
 
 ## events
 column name     | data type | details
@@ -16,48 +16,19 @@ column name     | data type | details
 id              | integer   | not null, primary key
 title           | string    | not null
 body            | text      | not null
-resort_id       | integer   | not null
-host_id         | integer   | not null
+date            | date      | not null
+resort_id       | integer   | not null, foreign key
+host_id         | integer   | not null, foreign key
 
 ## hosts
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-user_id         | integer   | not null, indexed, unique
+user_id         | integer   | not null, indexed, unique, foreign key
 
 ## resorts
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-name            | string    | not null, indexed, unique
-
-<!-- ## notes
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-title       | string    | not null
-body        | text      | not null
-author_id   | integer   | not null, foreign key (references users), indexed
-notebook_id | integer   | not null, foreign key (references notebooks), indexed
-archived    | boolean   | not null, default: false
-
-## notebooks
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-description | string    |
-
-## tags
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-name        | string    | not null
-
-## taggings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-note_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
-tag_id      | integer   | not null, foreign key (references tags), indexed -->
+name            | string    | not null
+address         | string    | not null
