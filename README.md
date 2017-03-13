@@ -1,4 +1,4 @@
-[Heroku link]
+[Heroku link]: https://www.heroku.com/
 [Trello link]: https://trello.com/b/bFP1uT8F/skiwithstrangers
 
 ## Minimum Viable Product
@@ -60,5 +60,5 @@ Bonus: Suggestions based on event details and user profiles
 
 ### Bonus Features (TBD)
 
-- [] Connect Google Maps API
-- [] Event suggestions based on event details and user profiles
+- [ ] Connect Google Maps API
+- [ ] Event suggestions based on event details and user profiles
