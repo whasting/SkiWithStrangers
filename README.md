@@ -1,5 +1,8 @@
-[Heroku link]: https://www.heroku.com/
-[Trello link]: https://trello.com/b/bFP1uT8F/skiwithstrangers
+[Heroku link][heroku]
+[Trello link][trello]
+
+[heroku]: https://www.heroku.com/
+[trello]: https://trello.com/b/bFP1uT8F/skiwithstrangers
 
 ## Minimum Viable Product
 SkiWithStrangers is a web application inspired by TeaWithStrangers built using Ruby on Rails and React/Redux. Here are the MVPs:
