@@ -14,12 +14,17 @@
 #
 
 class User < ApplicationRecord
-  validates :username, :password_digest, :session_token, :is_host, presence: true
+  validates :username, :password_digest, :session_token, presence: true
   validates :username, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  before_save :default_values
   attr_reader :password
-  after_intialize :ensure_session_token
+  after_initialize :ensure_session_token
+
+  def default_values
+    self.is_host ||= false
+  end
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
