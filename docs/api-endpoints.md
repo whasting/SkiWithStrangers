@@ -26,14 +26,6 @@
 - `PATCH /api/events/:id`
 - `DELETE /api/events/:id`
 
-### Hosts
-
-- `GET /api/hosts`
-- `POST /api/hosts`
-- `GET /api/hosts/:id`
-- `PATCH /api/hosts/:id`
-- `DELETE /api/hosts/:id`
-
 ### Resorts
 
 - `GET /api/resorts`

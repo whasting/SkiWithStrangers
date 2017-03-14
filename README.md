@@ -17,6 +17,8 @@ SkiWithStrangers is a web application inspired by TeaWithStrangers built using R
 - 7) Dashboard of joined events/hosted events
 
 Bonus: Google Map API showing events based on location
+Bonus: Get weather for ski resorts via API
+Bonus: Get rating for ski resorts via API
 Bonus: Suggestions based on event details and user profiles
 
 ## Design Docs
@@ -65,4 +67,6 @@ Bonus: Suggestions based on event details and user profiles
 ### Bonus Features (TBD)
 
 - [ ] Connect Google Maps API
+- [ ] Get weather for ski resorts via API
+- [ ] Get rating for ski resorts via API
 - [ ] Event suggestions based on event details and user profiles

@@ -62,13 +62,13 @@
 |-------|-------------|
 | "/sign-up" | "AuthFormContainer" |
 | "/sign-in" | "AuthFormContainer" |
-| "/home" | "ResortsContainer" |
-| "/home/:resortId" | "EventsContainer" |
-| "/home/:resortId/event/:eventId" | "EventDetailContainer" |
-| "/home/:resortId/resort" | "ResortDetailContainer" |
-| "/hosts" | "HostsContainer/BecomeHostContainer" |
-| "/hosts/:hostId" | "HostProfileContainer" |
+| "/resorts" | "ResortsContainer" |
+| "/resorts/:resortId" | "EventsContainer" |
+| "/resorts/:resortId/event/:eventId" | "EventDetailContainer" |
+| "/resorts/:resortId/resort" | "ResortDetailContainer" |
+| "/hosts" | "HostsIndexContainer" |
+| "/users/:id" | "UserProfileContainer" |
 | "/hosts/new-event" | "EventCreationContainer" |
-| "/hosts/apply" | "ApplyContainer" |
+| "/apply" | "ApplyContainer" |
 | "/dashboard" | "DashboardContainer" |
 | "/about" | "AboutContainer" |
