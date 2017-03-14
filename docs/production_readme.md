@@ -1,8 +1,8 @@
 # SkiWithStrangers
 
-[SkiWithStrangers live]
+[SkiWithStrangers live][heroku]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: https://ski-with-strangers.herokuapp.com/#/
 
 SkiWithStrangers is a web application inspired by TeaWithStrangers built using Ruby on Rails and React/Redux.
 

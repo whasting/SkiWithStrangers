@@ -2,7 +2,7 @@
 
 [Trello link][trello]
 
-[heroku]: https://www.heroku.com/
+[heroku]: https://ski-with-strangers.herokuapp.com/#/
 [trello]: https://trello.com/b/bFP1uT8F/skiwithstrangers
 
 ## Minimum Viable Product
