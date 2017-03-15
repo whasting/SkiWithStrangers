@@ -5,10 +5,12 @@ export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 // thunk
 
-export const login = user => dispatch => (
+export const login = user => dispatch => {
+  return (
   APIUtil.login(user)
-    .then(user => dispatch(receiveCurrentUser(user)))
-);
+    .then(user => dispatch(receiveCurrentUser(user)),
+     err => dispatch(receiveErrors(err.responseJSON)))
+);};
 
 export const logout = () => dispatch => (
   APIUtil.logout()
@@ -17,17 +19,18 @@ export const logout = () => dispatch => (
 
 export const signup = user => dispatch => (
   APIUtil.signup(user)
-    .then(user => dispatch(receiveCurrentUser(user)))
+    .then(user => dispatch(receiveCurrentUser(user)),
+     err => dispatch(receiveErrors(err.responseJSON)))
 );
 
 // sync
 
-const receiveCurrentUser = (currentUser) => ({
+export const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
 });
 
-const receiveErrors = (errors) => ({
+export const receiveErrors = (errors) => ({
   type: RECEIVE_ERRORS,
   errors
 });
