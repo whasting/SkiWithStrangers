@@ -11,10 +11,19 @@ class Greeting extends React.Component {
 
   sessionLinks() {
     return (
-      <nav className="login-signup">
-        <Link to="/login" activeClassName="current">Login</Link>
-        <br />
-        <Link to="/signup" activeClassName="current">Signup</Link>
+      <nav className="navbar">
+        <h1 className="logo">
+          Ski With Strangers</h1>
+        <div className="nav-buttons">
+          <Link
+            to="/signup"
+            activeClassName="current"
+            className="nav-button">Signup</Link>
+          <Link
+            to="/login"
+            activeClassName="current"
+            className="nav-button">Login</Link>
+        </div>
       </nav>
     );
   }
@@ -22,9 +31,12 @@ class Greeting extends React.Component {
   personalGreeting() {
     return (
       <nav className="navbar">
-        <button
-          className="navbar-button" onClick={this.props.logout}>Log Out
-        </button>
+        <h1 className="logo">Ski With Strangers</h1>
+        <div className="nav-buttons">
+          <Link
+            onClick={this.props.logout}
+            className="nav-button">Log Out</Link>
+        </div>
       </nav>
     );
   }
