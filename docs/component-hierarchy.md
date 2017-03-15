@@ -60,8 +60,8 @@
 
 |Path   | Component   |
 |-------|-------------|
-| "/sign-up" | "AuthFormContainer" |
-| "/sign-in" | "AuthFormContainer" |
+| "/signup" | "AuthFormContainer" |
+| "/signin" | "AuthFormContainer" |
 | "/resorts" | "ResortsContainer" |
 | "/resorts/:resortId" | "EventsContainer" |
 | "/resorts/:resortId/event/:eventId" | "EventDetailContainer" |

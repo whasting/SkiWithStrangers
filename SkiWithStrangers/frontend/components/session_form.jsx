@@ -38,6 +38,18 @@ class SessionForm extends React.Component {
     }
   }
 
+  renderErrors() {
+    return (
+      <ul>
+        {
+          this.props.errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))
+        }
+      </ul>
+    );
+  }
+
   render() {
     let oppositePath;
     let pathLabel;
@@ -57,6 +69,8 @@ class SessionForm extends React.Component {
         <br />
         <Link to={oppositePath}>{pathLabel}</Link>
         <br />
+        <br />
+        {this.renderErrors()}
         <label>Username
           <br />
           <input
