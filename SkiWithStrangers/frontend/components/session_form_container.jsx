@@ -4,10 +4,10 @@ import { login, signup } from '../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let form = "";
-  if (ownProps.location.pathname === "/login") {
-    form = "login";
-  } else {
+  if (ownProps.location.pathname === "/signup") {
     form = "signup";
+  } else {
+    form = "login";
   }
   return ({
     loggedIn: Boolean(state.session.currentUser),
@@ -18,10 +18,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   let action;
-  if (ownProps.location.pathname === "/login") {
-    action = login;
-  } else {
+  if (ownProps.location.pathname === "/signup") {
     action = signup;
+  } else {
+    action = login;
   }
   return ({processForm: user => dispatch(action(user))});
 };

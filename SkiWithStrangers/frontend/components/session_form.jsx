@@ -15,6 +15,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
+    console.log("PROCESSFORM", this.props.processForm(user));
     this.props.processForm(user);
   }
 
@@ -25,7 +26,7 @@ class SessionForm extends React.Component {
 
 	redirectIfLoggedIn() {
     if (this.props.loggedIn) {
-			this.props.router.push("/");
+			this.props.router.push("/resorts");
 		}
   }
 
@@ -39,62 +40,68 @@ class SessionForm extends React.Component {
   }
 
   renderErrors() {
-    return (
-      <ul>
-        {
-          this.props.errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))
-        }
-      </ul>
-    );
+    if (this.props.errors) {
+      return (
+        <ul>
+          {
+            this.props.errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))
+          }
+        </ul>
+      );
+    }
   }
 
   clearErrors() {
-    
+
   }
 
   render() {
     let oppositePath;
     let pathLabel;
     let header;
-    if (this.props.formType === 'login') {
-      header = 'Login';
-      oppositePath = '/signup';
-      pathLabel = 'Signup';
-    } else {
+    if (this.props.formType === 'signup') {
       header = 'Signup';
       oppositePath = '/login';
       pathLabel = 'Login';
+    } else {
+      header = 'Login';
+      oppositePath = '/signup';
+      pathLabel = 'Signup';
     }
     return (
-      <div>
-        <header><h2>{header}</h2></header>
-        <br />
-        <Link to={oppositePath}>{pathLabel}</Link>
-        <br />
-        <br />
-        {this.renderErrors()}
-        <label>Username
-          <br />
-          <input
-            type="text"
-            value={this.state.username}
-            onChange={this.handleChange} />
-        </label>
-        <br />
-        <label>Password
-          <br />
-          <input
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChange} />
-        </label>
-        <br />
-        <input
-          type="submit"
-          onClick={this.handleSubmit}
-          value="Submit" />
+      <div className="splash-container">
+        <div className="splash">
+          <div className="auth-form">
+            <header><h2>{header}</h2></header>
+            <br />
+            <Link to={oppositePath}>{pathLabel}</Link>
+            <br />
+            <br />
+            {this.renderErrors()}
+            <label>Username
+              <br />
+              <input
+                type="text"
+                value={this.state.username}
+                onChange={this.handleChange} />
+            </label>
+            <br />
+            <label>Password
+              <br />
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.handleChange} />
+            </label>
+            <br />
+            <input
+              type="submit"
+              onClick={this.handleSubmit}
+              value="Submit" />
+          </div>
+        </div>
       </div>
     );
   }
