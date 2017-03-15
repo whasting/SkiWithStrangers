@@ -50,6 +50,10 @@ class SessionForm extends React.Component {
     );
   }
 
+  clearErrors() {
+    
+  }
+
   render() {
     let oppositePath;
     let pathLabel;
