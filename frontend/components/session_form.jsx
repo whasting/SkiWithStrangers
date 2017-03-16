@@ -15,6 +15,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
+    console.log("PROCESSFORM", this.props.processForm(user));
     this.props.processForm(user);
   }
 
@@ -25,7 +26,7 @@ class SessionForm extends React.Component {
 
 	redirectIfLoggedIn() {
     if (this.props.loggedIn) {
-			this.props.router.push("/");
+			this.props.router.push("/resorts");
 		}
   }
 
@@ -39,62 +40,117 @@ class SessionForm extends React.Component {
   }
 
   renderErrors() {
-    return (
-      <ul>
-        {
-          this.props.errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))
-        }
-      </ul>
-    );
+    if (this.props.errors) {
+      return (
+        <ul>
+          {
+            this.props.errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))
+          }
+        </ul>
+      );
+    }
   }
 
   clearErrors() {
-    
+
   }
 
-  render() {
-    let oppositePath;
-    let pathLabel;
-    let header;
-    if (this.props.formType === 'login') {
-      header = 'Login';
-      oppositePath = '/signup';
-      pathLabel = 'Signup';
+  renderTabs() {
+    let loginTab;
+    let signupTab;
+    if (this.props.formType === 'signup') {
+      loginTab = 'not-active';
+      signupTab = 'active';
     } else {
-      header = 'Signup';
-      oppositePath = '/login';
-      pathLabel = 'Login';
+      loginTab = 'active';
+      signupTab = 'not-active';
     }
     return (
-      <div>
-        <header><h2>{header}</h2></header>
-        <br />
-        <Link to={oppositePath}>{pathLabel}</Link>
-        <br />
-        <br />
-        {this.renderErrors()}
-        <label>Username
-          <br />
+      <header className="tabs">
+        <div className={`tab1 ${loginTab}`}>
+          <Link
+            to="/login"
+            className={loginTab}>Login</Link>
+        </div>
+        <div className={`tab2 ${signupTab}`}>
+          <Link
+            to="/signup"
+            className={signupTab}>Signup</Link>
+        </div>
+      </header>
+    );
+  }
+
+  renderForm() {
+    if (this.props.formType === 'signup') {
+      return (
+        <div className="input-fields">
           <input
             type="text"
             value={this.state.username}
-            onChange={this.handleChange} />
-        </label>
-        <br />
-        <label>Password
-          <br />
+            onChange={this.handleChange}
+            placeholder="Username" />
           <input
             type="password"
-            value={this.state.password}
-            onChange={this.handleChange} />
-        </label>
-        <br />
-        <input
-          type="submit"
-          onClick={this.handleSubmit}
-          value="Submit" />
+            value=""
+            onChange={this.handleChange}
+            placeholder="Password" />
+          <input
+            type="password"
+            value=""
+            onChange={this.handleChange}
+            placeholder="Re-enter Password" />
+          <input
+            type="submit"
+            onClick={this.handleSubmit}
+            value="Sign Up" />
+        </div>
+      );
+    } else {
+      return (
+        <div className="input-fields">
+          <input
+            type="text"
+            value={this.state.username}
+            onChange={this.handleChange}
+            placeholder="Username" />
+          <input
+            type="password"
+            value=""
+            onChange={this.handleChange}
+            placeholder="Password" />
+          <input
+            type="submit"
+            onClick={this.handleSubmit}
+            value="Log In" />
+          <input
+            type="submit"
+            onClick={this.handleSubmit}
+            value="Demo" />
+        </div>
+      );
+    }
+
+  }
+
+  render() {
+    let submit;
+    if (this.props.formType === 'signup') {
+      submit = 'Sign Up';
+    } else {
+      submit = 'Log In';
+    }
+    return (
+      <div className="splash-container">
+        <div className="splash">
+          <div className="auth-form">
+            {this.renderTabs()}
+            {this.renderErrors()}
+            {this.renderForm()}
+          </div>
+        </div>
       </div>
     );
   }

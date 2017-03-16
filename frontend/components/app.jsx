@@ -1,12 +1,13 @@
 import React from 'react';
 import GreetingContainer from './greeting_container';
 
-const App = ({ children }) => (
+const App = ({ children }) => {
+  console.log(children);
+  return (
   <div>
-    <h1>Ski With Strangers</h1>
     <GreetingContainer />
     {children}
   </div>
 );
-
+};
 export default App;
