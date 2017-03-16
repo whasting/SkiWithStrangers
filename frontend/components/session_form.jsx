@@ -6,16 +6,17 @@ class SessionForm extends React.Component {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      password2: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.tabSwitch = this.tabSwitch.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    console.log("PROCESSFORM", this.props.processForm(user));
     this.props.processForm(user);
   }
 
@@ -32,10 +33,19 @@ class SessionForm extends React.Component {
 
   handleChange(event) {
     event.preventDefault();
-    if (event.target.type === 'text') {
+    if (event.target.placeholder === 'Username') {
       this.setState({username: event.target.value});
-    } else if (event.target.type === 'password') {
+    } else if (event.target.placeholder === 'Password') {
       this.setState({password: event.target.value});
+    } else if (event.target.placeholder === 'Re-enter Password') {
+      this.setState({password2: event.target.value});
+    }
+  }
+
+  handleDemo(event) {
+    event.preventDefault();
+    if (this.props.formType === 'signup') {
+      this.props.router.push('/login');
     }
   }
 
@@ -53,8 +63,16 @@ class SessionForm extends React.Component {
     }
   }
 
-  clearErrors() {
-
+  tabSwitch(e) {
+    if (this.props.formType === 'login' &&
+        e.target.className.includes('not-active')) {
+      this.clearPasswordAndErrors();
+      return this.props.router.push('/signup');
+    } else if (this.props.formType === 'signup' &&
+               e.target.className.includes('not-active')) {
+      this.clearPasswordAndErrors();
+      return this.props.router.push('/login');
+    }
   }
 
   renderTabs() {
@@ -69,12 +87,16 @@ class SessionForm extends React.Component {
     }
     return (
       <header className="tabs">
-        <div className={`tab1 ${loginTab}`}>
+        <div
+          className={`tab1 ${loginTab}`}
+          onClick={this.tabSwitch}>
           <Link
             to="/login"
             className={loginTab}>Login</Link>
         </div>
-        <div className={`tab2 ${signupTab}`}>
+        <div
+          className={`tab2 ${signupTab}`}
+          onClick={this.tabSwitch}>
           <Link
             to="/signup"
             className={signupTab}>Signup</Link>
@@ -83,52 +105,100 @@ class SessionForm extends React.Component {
     );
   }
 
+  clearPasswordAndErrors() {
+    if (this.props.formType === 'signup') {
+      this.setState({password: "", password2: ""});
+    } else {
+      this.setState({password: ""});
+    }
+    this.props.clearErrors();
+  }
+
   renderForm() {
     if (this.props.formType === 'signup') {
       return (
         <div className="input-fields">
-          <input
-            type="text"
-            value={this.state.username}
-            onChange={this.handleChange}
-            placeholder="Username" />
-          <input
-            type="password"
-            value=""
-            onChange={this.handleChange}
-            placeholder="Password" />
-          <input
-            type="password"
-            value=""
-            onChange={this.handleChange}
-            placeholder="Re-enter Password" />
-          <input
-            type="submit"
-            onClick={this.handleSubmit}
-            value="Sign Up" />
+          <div className="text-inputs">
+            <div className="username-container">
+              <input
+                type="text"
+                className="signup-username"
+                value={this.state.username}
+                onChange={this.handleChange}
+                placeholder="Username" />
+            </div>
+            <div className="password-container">
+              <input
+                type="password"
+                className="signup-password"
+                onChange={this.handleChange}
+                value={this.state.password}
+                placeholder="Password" />
+              <input
+                type="password"
+                className="signup-password2"
+                onChange={this.handleChange}
+                value={this.state.password2}
+                placeholder="Re-enter Password" />
+            </div>
+          </div>
+          <div className="errors-container">
+            <div className="errors">
+              {this.renderErrors()}
+            </div>
+          </div>
+          <div className="buttons-signup">
+            <input
+              type="submit"
+              className="sign-up-button"
+              onClick={this.handleSubmit}
+              value="Sign Up" />
+            <input
+              type="submit"
+              className="demo-button"
+              onClick={this.handleSubmit}
+              value="Demo" />
+          </div>
         </div>
       );
     } else {
       return (
         <div className="input-fields">
-          <input
-            type="text"
-            value={this.state.username}
-            onChange={this.handleChange}
-            placeholder="Username" />
-          <input
-            type="password"
-            value=""
-            onChange={this.handleChange}
-            placeholder="Password" />
-          <input
-            type="submit"
-            onClick={this.handleSubmit}
-            value="Log In" />
-          <input
-            type="submit"
+          <div className="text-inputs">
+            <div className="username-container">
+              <input
+                type="text"
+                className="login-username"
+                value={this.state.username}
+                onChange={this.handleChange}
+                placeholder="Username" />
+            </div>
+            <div className="password-container">
+              <input
+                type="password"
+                className="login-password"
+                onChange={this.handleChange}
+                value={this.state.password}
+                placeholder="Password" />
+            </div>
+          </div>
+          <div className="errors-container">
+            <div className="errors">
+              {this.renderErrors()}
+            </div>
+          </div>
+          <div className="buttons">
+            <input
+              type="submit"
+              className="log-in-button"
+              onClick={this.handleSubmit}
+              value="Log In" />
+            <input
+              type="submit"
+              className="demo-button"
             onClick={this.handleSubmit}
             value="Demo" />
+          </div>
         </div>
       );
     }
@@ -147,7 +217,6 @@ class SessionForm extends React.Component {
         <div className="splash">
           <div className="auth-form">
             {this.renderTabs()}
-            {this.renderErrors()}
             {this.renderForm()}
           </div>
         </div>

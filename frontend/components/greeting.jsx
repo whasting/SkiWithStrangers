@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 
 class Greeting extends React.Component {
   constructor(props) {
@@ -7,13 +7,13 @@ class Greeting extends React.Component {
 
     this.sessionLinks = this.sessionLinks.bind(this);
     this.personalGreeting = this.personalGreeting.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   sessionLinks() {
     return (
       <nav className="navbar">
         <div className="logo">
-          <img type="image/png" href="../app/assets/images/sws_logo.png" />
           <h1>Ski With Strangers</h1>
         </div>
         <div className="nav-buttons">
@@ -34,16 +34,20 @@ class Greeting extends React.Component {
     return (
       <nav className="navbar">
         <div className="logo">
-          <img src="assets/images/sws_logo.png" />
           <h1>Ski With Strangers</h1>
         </div>
         <div className="nav-buttons">
           <Link
-            onClick={this.props.logout}
+            onClick={this.handleLogout}
             className="nav-button">Log Out</Link>
         </div>
       </nav>
     );
+  }
+
+  handleLogout() {
+    this.props.logout();
+    setTimeout(() => this.props.router.push('/login'), 80);
   }
 
   render() {
@@ -61,4 +65,4 @@ class Greeting extends React.Component {
   }
 }
 
-export default Greeting;
+export default withRouter(Greeting);

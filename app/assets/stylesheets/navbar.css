@@ -23,17 +23,16 @@
 }
 
 .logo {
-  padding: 1rem;
-  align-self: center;
+  padding: 26.5px;
   font-weight: bold;
 }
 
-img {
+.logo img {
   position: absolute;
   top: 0;
   left: 0;
-  height: auto;
-  width: auto;
+  width: 7%;
+  height: 7%;
   z-index: 999;
 }
 
@@ -42,14 +41,12 @@ img {
 }
 
 .nav-button {
-  border: 1px solid #4B6290;
-  padding: 25.5px;
+  padding: 26.5px;
   color: #E8E8E8;
   transition: background-color .25s, border .5s, ease-in-out;
 }
 
 .nav-button:hover {
-  border: 1px solid #000000;
   background-color: #39427a;
   opacity: 1;
   transition: background-color .75s, border 1s, ease-in-out;
