@@ -12,17 +12,19 @@ class Greeting extends React.Component {
   sessionLinks() {
     return (
       <nav className="navbar">
-        <h1 className="logo">
-          Ski With Strangers</h1>
+        <div className="logo">
+          <img type="image/png" href="../app/assets/images/sws_logo.png" />
+          <h1>Ski With Strangers</h1>
+        </div>
         <div className="nav-buttons">
           <Link
             to="/signup"
             activeClassName="current"
-            className="nav-button">Signup</Link>
+            className="nav-button">Sign Up</Link>
           <Link
             to="/login"
             activeClassName="current"
-            className="nav-button">Login</Link>
+            className="nav-button">Log In</Link>
         </div>
       </nav>
     );
@@ -31,7 +33,10 @@ class Greeting extends React.Component {
   personalGreeting() {
     return (
       <nav className="navbar">
-        <h1 className="logo">Ski With Strangers</h1>
+        <div className="logo">
+          <img src="assets/images/sws_logo.png" />
+          <h1>Ski With Strangers</h1>
+        </div>
         <div className="nav-buttons">
           <Link
             onClick={this.props.logout}

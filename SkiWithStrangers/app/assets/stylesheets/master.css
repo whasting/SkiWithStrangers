@@ -13,6 +13,16 @@ body, html {
   height: 100%;
 }
 
+input[type=text], input[type=password] {
+  padding: 2px;
+  border: 1px solid black;
+}
+
+input[type=submit] {
+  border: 1px solid black;
+  background-color: #6E9ED4;
+}
+
 div.splash-container {
   height: calc(100% - 75px);
   background-image: url('https://images3.alphacoders.com/274/thumb-1920-274629.jpg');
@@ -20,7 +30,7 @@ div.splash-container {
 }
 
 .splash {
-  background-color: rgba(0, 0, 0, .10);
+  background-color: rgba(0, 0, 0, .20);
   position: absolute;
   top: 75px;
   left: 0;
@@ -42,12 +52,24 @@ div.splash-container {
 }
 
 .auth-form {
-  position: relative;
+  position: absolute;
   top: 25%;
   border-radius: 10px;
-  padding: 25px 60px;
-  max-width: 40%;
-  max-height: 174px;
+  width: 500px;
+  height: 300px;
   border: 2px solid black;
-  background-color: white;
+  background-color: #f9f7ff;
+  font-size: 20px;
+}
+
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-fields > input {
+  position: relative;
+  top: 75px;
 }
