@@ -1,0 +1,56 @@
+.input-fields > input {
+  position: relative;
+  margin: 10px;
+}
+
+.text-inputs .login-username, .text-inputs .login-password {
+  position: absolute;
+  width: 73.25%;
+}
+
+.text-inputs .username-container {
+  height: 45%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.text-inputs .password-container {
+  height: 45%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.text-inputs .username-container .login-username {
+  position: relative;
+  top: 50%;
+  height: 25%;
+}
+
+.text-inputs .password-container .login-password {
+  position: relative;
+  top: 50%;
+  height: 25%;
+}
+
+
+.buttons .log-in-button {
+  background-color: #6E9ED4;
+  color: #FFFFFF;
+  position: absolute;
+  left: 12.5%;
+  bottom: 12.5%;
+}
+
+.buttons .demo-button {
+  position: absolute;
+  right: 12.5%;
+  bottom: 12.5%;
+}
+
+.buttons .log-in-button:hover, .buttons .demo-button:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+  transition: filter 0.3s ease-in-out;
+}

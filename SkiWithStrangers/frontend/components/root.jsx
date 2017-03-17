@@ -27,12 +27,14 @@ const Root = ({ store }) => {
         <Route path='/' component={ App }>
           <IndexRoute component={ SessionFormContainer } />
           <Route path='/login'
-            component={ SessionFormContainer }
-            onEnter={_redirectIfLoggedIn}/>
-          <Route path='/signup'
-              component={ SessionFormContainer }
-              onEnter={_redirectIfLoggedIn}/>
-            <Route path='/resorts' component={ ResortsContainer } />
+            component={ SessionFormContainer }/>
+          <Route
+              path='/signup'
+              component={ SessionFormContainer }/>
+            <Route
+              path='/resorts'
+              component={ ResortsContainer }
+              onEnter={_ensureLoggedIn} />
           </Route>
       </Router>
     </Provider>

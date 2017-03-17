@@ -1,0 +1,77 @@
+.input-fields > input {
+  position: relative;
+  margin: 10px;
+}
+
+.text-inputs .signup-username {
+  position: absolute;
+  width: 73.25%;
+}
+
+.text-inputs .signup-password {
+  width: 35.3%;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.text-inputs .signup-password2 {
+  width: 35.3%;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.text-inputs .username-container {
+  height: 45%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.text-inputs .password-container {
+  height: 45%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.text-inputs .username-container .signup-username {
+  position: relative;
+  top: 50%;
+  height: 25%;
+}
+
+.text-inputs .password-container .signup-password {
+  position: relative;
+  top: 50%;
+  height: 25%;
+}
+
+.text-inputs .password-container .signup-password2 {
+  position: relative;
+  top: 50%;
+  height: 25%;
+}
+
+.buttons-signup {
+  height: 30%;
+}
+
+.buttons-signup .sign-up-button {
+  background-color: #6E9ED4;
+  color: #FFFFFF;
+  position: absolute;
+  left: 12.5%;
+  bottom: 12.5%;
+}
+
+.buttons-signup .demo-button {
+  position: absolute;
+  right: 12.5%;
+  bottom: 12.5%;
+}
+
+.buttons-signup .sign-up-button:hover{
+  cursor: pointer;
+  filter: brightness(90%);
+  transition: filter 0.3s ease-in-out;
+}
