@@ -17,27 +17,25 @@
 }
 
 .tab1.not-active {
-  background-color: #B0ADBA;
+  background-color: #c1bcc4;
   border-bottom: 2px solid black;
   border-right: 2px solid black;
   border-left: 2px transparent;
   border-top: 2px transparent;
   border-top-left-radius: 7px;
-  transition: background-color 0.5s, ease-in-out;
 }
 
 .tab2.not-active {
-  background-color: #B0ADBA;
+  background-color: #c1bcc4;
   border-bottom: 2px solid black;
   border-left: 2px solid black;
   border-right: 2px transparent;
   border-top: 2px transparent;
   border-top-right-radius: 7px;
-  transition: background-color 0.25s, ease-in-out;
 }
 
 .tab1.not-active:hover, .tab2.not-active:hover {
-  background-color: #c1bcc4;
+  background-color: #B0ADBA;
   transition: background-color 0.5s, ease-in-out;
   cursor: pointer;
 }

@@ -12,6 +12,8 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.tabSwitch = this.tabSwitch.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
   }
 
   handleSubmit(e) {
@@ -42,10 +44,49 @@ class SessionForm extends React.Component {
     }
   }
 
-  handleDemo(event) {
-    event.preventDefault();
+  handleDemo(e) {
+    e.target.disabled = "disabled";
+
     if (this.props.formType === 'signup') {
       this.props.router.push('/login');
+    }
+
+    const demoUsername = ['d', 'e', 'm', 'o', '_', 'u', 's', 'e', 'r'];
+    const demoPassword = ['p', 'a', 's', 's', 'w', 'o', 'r', 'd','p',
+                          'a', 's', 's', 'w', 'o', 'r', 'd'];
+    let usernameFill = "";
+    let passwordFill = "";
+    let i = 0;
+
+    let userFill = setInterval(() => {
+      usernameFill += demoUsername[i];
+      i++;
+      this.setState({username: usernameFill});
+      if (demoUsername.length === i) {
+        clearInterval(userFill);
+        i = 0;
+        let passFill = setInterval(() => {
+          passwordFill += demoPassword[i];
+          i++;
+          this.setState({password: passwordFill});
+          if (demoPassword.length === i) {
+            const user = this.state;
+            setTimeout(() => this.props.processForm(user), 120);
+            clearInterval(passFill);
+          }
+        }, 30);
+      }
+    }, 75);
+  }
+
+  handleSignup(e) {
+    e.preventDefault();
+    this.props.clearErrors();
+    if (this.state.password === this.state.password2) {
+      const user = this.state;
+      this.props.processForm(user);
+    } else {
+      this.props.receiveErrors(["Passwords Don't Match"]);
     }
   }
 
@@ -151,12 +192,12 @@ class SessionForm extends React.Component {
             <input
               type="submit"
               className="sign-up-button"
-              onClick={this.handleSubmit}
+              onClick={this.handleSignup}
               value="Sign Up" />
             <input
               type="submit"
               className="demo-button"
-              onClick={this.handleSubmit}
+              onClick={this.handleDemo}
               value="Demo" />
           </div>
         </div>
@@ -196,7 +237,7 @@ class SessionForm extends React.Component {
             <input
               type="submit"
               className="demo-button"
-            onClick={this.handleSubmit}
+            onClick={this.handleDemo}
             value="Demo" />
           </div>
         </div>

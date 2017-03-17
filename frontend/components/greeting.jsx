@@ -47,7 +47,6 @@ class Greeting extends React.Component {
 
   handleLogout() {
     this.props.logout();
-    setTimeout(() => this.props.router.push('/login'), 80);
   }
 
   render() {
