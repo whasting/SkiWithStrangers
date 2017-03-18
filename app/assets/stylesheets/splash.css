@@ -1,0 +1,35 @@
+div.splash-container {
+  height: calc(100% - 75px);
+  background-image: url('http://res.cloudinary.com/whasting/image/upload/v1489789281/splash_zlr8iy.jpg');
+  background-size: cover;
+}
+
+.splash {
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 75px;
+  left: 0;
+  border-top: 1px solid black;
+  height: calc(100% - 76px);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+
+  justify-content: center;
+}
+
+.test-detail {
+  position: absolute;
+  right: 0;
+  background-color: rgba(110, 158, 212, .8);
+  height: 100%;
+  width: calc(100% - 400px);
+}

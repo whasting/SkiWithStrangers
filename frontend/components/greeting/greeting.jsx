@@ -14,7 +14,14 @@ class Greeting extends React.Component {
     return (
       <nav className="navbar">
         <div className="logo">
-          <h1>Ski With Strangers</h1>
+          <div className="logo-img">
+            <img
+              src="http://res.cloudinary.com/whasting/image/upload/c_scale,h_50,w_50/v1489789326/ski_mask_gfqgc3.png"
+              className="logo-img"/>
+          </div>
+          <div className="logo-text">
+            <h1>Ski With Strangers</h1>
+          </div>
         </div>
         <div className="nav-buttons">
           <Link
@@ -34,7 +41,14 @@ class Greeting extends React.Component {
     return (
       <nav className="navbar">
         <div className="logo">
-          <h1>Ski With Strangers</h1>
+          <div className="logo-img">
+            <img
+              src="http://res.cloudinary.com/whasting/image/upload/c_scale,h_50,w_50/v1489789326/ski_mask_gfqgc3.png"
+              className="logo-img"/>
+          </div>
+          <div className="logo-text">
+            <h1>Ski With Strangers</h1>
+          </div>
         </div>
         <div className="nav-buttons">
           <Link

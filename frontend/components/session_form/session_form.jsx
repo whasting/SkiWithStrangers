@@ -254,13 +254,9 @@ class SessionForm extends React.Component {
       submit = 'Log In';
     }
     return (
-      <div className="splash-container">
-        <div className="splash">
-          <div className="auth-form">
-            {this.renderTabs()}
-            {this.renderForm()}
-          </div>
-        </div>
+      <div className="auth-form">
+        {this.renderTabs()}
+        {this.renderForm()}
       </div>
     );
   }

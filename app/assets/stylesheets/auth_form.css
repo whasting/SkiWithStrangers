@@ -1,0 +1,77 @@
+.auth-form {
+  position: absolute;
+  top: 25%;
+  border-radius: 10px;
+  width: 500px;
+  height: 300px;
+  border: 2px solid black;
+  background-color: #f6f3fa;
+  font-size: 20px;
+}
+
+.tabs {
+  position: absolute;
+  top: 0;
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.input-fields {
+  position: absolute;
+  height: 85%;
+  width: 100%;
+  bottom: 0;
+}
+
+.errors-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15%;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.errors-container .errors {
+  color: red;
+  font-size: 16px;
+  opacity: 1;
+}
+
+.errors li {
+  padding: 3px;
+}
+
+.text-inputs {
+  height: 55%;
+  width: 100%;
+}
+
+.buttons {
+  height: 30%;
+  width: 100%;
+}
+
+.input-fields input[type=submit] {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 8px 40px;
+  font-size: 16px;
+  width: 33%;
+}
+
+.input-fields input[type=text], input[type=password] {
+  padding: 6px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #f9f7ff;
+  font-size: 16px;
+}
+
+.demo-button {
+  background-color: #098A52;
+  color: #FFFFFF;
+}
