@@ -1,5 +1,31 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
+import Modal from 'react-modal';
+import { findDOMNode } from 'react-dom';
+
+const customStyles = {
+  overlay: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
+  },
+
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    transform             : 'translate(-50%, -50%)',
+    width: '500px',
+    height: '300px',
+    padding: '2px',
+    backgroundColor: 'transparent',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'none',
+    transition: 'opacity 0.5s'
+  }
+};
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -7,8 +33,12 @@ class SessionForm extends React.Component {
     this.state = {
       username: "",
       password: "",
-      password2: ""
+      password2: "",
+      modalOpen: false
     };
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.tabSwitch = this.tabSwitch.bind(this);
@@ -16,16 +46,38 @@ class SessionForm extends React.Component {
     this.handleSignup = this.handleSignup.bind(this);
   }
 
+  componentWillMount() {
+    Modal.setAppElement(document.getElementById('root'));
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.visible !== this.props.visible) {
+      console.log("TEST");
+      if (newProps.visible) {
+        $(findDOMNode(this)).stop(true, true).fadeIn('slow');
+      } else {
+        $(findDOMNode(this)).stop(true, true).fadeOut('slow');
+      }
+    }
+
+
+    this.props = newProps;
+    this.redirectIfLoggedIn();
+	}
+
+  openModal(e) {
+    this.setState({modalOpen: true});
+  }
+
+  closeModal() {
+    this.setState({modalOpen: false});
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
     this.props.processForm(user);
   }
-
-  componentWillReceiveProps(newProps) {
-    this.props = newProps;
-    this.redirectIfLoggedIn();
-	}
 
 	redirectIfLoggedIn() {
     if (this.props.loggedIn) {
@@ -243,7 +295,6 @@ class SessionForm extends React.Component {
         </div>
       );
     }
-
   }
 
   render() {
@@ -254,9 +305,23 @@ class SessionForm extends React.Component {
       submit = 'Log In';
     }
     return (
-      <div className="auth-form">
-        {this.renderTabs()}
-        {this.renderForm()}
+      <div className="auth-wrapper">
+        <div className="landing-wrapper">
+          <h1 className="landing-message">Get Out and Ski... With Strangers!</h1>
+          <button
+            onClick={this.openModal}
+            className='get-started'>Get Started</button>
+        </div>
+        <Modal
+          isOpen={this.state.modalOpen}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Auth Modal" >
+            <div className="auth-form">
+              {this.renderTabs()}
+              {this.renderForm()}
+            </div>
+        </Modal>
       </div>
     );
   }

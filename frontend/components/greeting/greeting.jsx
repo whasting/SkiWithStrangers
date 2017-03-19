@@ -16,7 +16,7 @@ class Greeting extends React.Component {
         <div className="logo">
           <div className="logo-img">
             <img
-              src="http://res.cloudinary.com/whasting/image/upload/c_scale,h_50,w_50/v1489789326/ski_mask_gfqgc3.png"
+              src="http://res.cloudinary.com/whasting/image/upload/c_scale,h_60,w_60/v1489951965/skier_iqb8ty.png"
               className="logo-img"/>
           </div>
           <div className="logo-text">
@@ -43,7 +43,7 @@ class Greeting extends React.Component {
         <div className="logo">
           <div className="logo-img">
             <img
-              src="http://res.cloudinary.com/whasting/image/upload/c_scale,h_50,w_50/v1489789326/ski_mask_gfqgc3.png"
+              src="http://res.cloudinary.com/whasting/image/upload/c_scale,h_60,w_60/v1489951965/skier_iqb8ty.png"
               className="logo-img"/>
           </div>
           <div className="logo-text">

@@ -1,12 +1,67 @@
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.landing-wrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 10%;
+  height: 200px;
+  width: 100%;
+}
+
+.landing-message {
+  position: absolute;
+  top: 15%;
+  width: 840px;
+  color: #E8E8E8;
+  font-size: 64px;
+  text-shadow: 2px 2px black;
+}
+
+.get-started {
+  position: absolute;
+  top: 65%;
+  background-color: #098A52;
+  color: #FFFFFF;
+  height: 55px;
+  width: 225px;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.get-started:hover{
+  cursor: pointer;
+  filter: brightness(90%);
+  transition: filter 0.3s ease-in-out;
+}
+
+.auth-form-hidden {
+  position: absolute;
+  width: 504px;
+  height: 304px;
+  opacity: 0;
+}
+
 .auth-form {
   position: absolute;
-  top: 25%;
   border-radius: 10px;
   width: 500px;
   height: 300px;
   border: 2px solid black;
   background-color: #f6f3fa;
   font-size: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  opacity: 1;
+  transition: opacity 1s;
 }
 
 .tabs {
