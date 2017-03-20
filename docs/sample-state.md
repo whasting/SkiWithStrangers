@@ -43,12 +43,10 @@
   resorts: {
     1: {
       name: "Sierra-at-Tahoe",
-      address: "1234 Sierra-at-Tahoe way",
       resort_logo_url: "https://www.sierraattahoe.com/"
     },
     2: {
       name: "Squaw Valley",
-      address: "1234 Sierra-at-Tahoe way",
       resort_logo_url: "http://squawalpine.com/"
     }
   },

@@ -14,17 +14,14 @@ class Greeting extends React.Component {
     return (
       <nav className="navbar">
         <div className="logo">
-          <h1>Ski With Strangers</h1>
-        </div>
-        <div className="nav-buttons">
-          <Link
-            to="/signup"
-            activeClassName="current"
-            className="nav-button">Sign Up</Link>
-          <Link
-            to="/login"
-            activeClassName="current"
-            className="nav-button">Log In</Link>
+          <div className="logo-img">
+            <img
+              src="http://res.cloudinary.com/whasting/image/upload/c_scale,h_60,w_60/v1489951965/skier_iqb8ty.png"
+              className="logo-img"/>
+          </div>
+          <div className="logo-text">
+            <h1>Ski With Strangers</h1>
+          </div>
         </div>
       </nav>
     );
@@ -34,12 +31,19 @@ class Greeting extends React.Component {
     return (
       <nav className="navbar">
         <div className="logo">
-          <h1>Ski With Strangers</h1>
+          <div className="logo-img">
+            <img
+              src="http://res.cloudinary.com/whasting/image/upload/c_scale,h_60,w_60/v1489951965/skier_iqb8ty.png"
+              className="logo-img"/>
+          </div>
+          <div className="logo-text">
+            <h1>Ski With Strangers</h1>
+          </div>
         </div>
-        <div className="nav-buttons">
+        <div className="nav-buttons-logged-in">
           <Link
             onClick={this.handleLogout}
-            className="nav-button">Log Out</Link>
+            className="nav-button-logged-in">Log Out</Link>
         </div>
       </nav>
     );

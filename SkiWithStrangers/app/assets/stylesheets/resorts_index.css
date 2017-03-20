@@ -1,0 +1,62 @@
+.resortsSidebar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 320px;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: rgba(255, 255, 255, .75);
+}
+
+.resorts-index-header {
+  position: fixed;
+  left: 0;
+  width: 320px;
+  height: calc(5% - 2px);
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, .75);
+  border-bottom: 2px solid black;
+  z-index: 2;
+}
+
+.resortsSidebarItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
+.resortLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafffa;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  width: 75%;
+  height: 60%;
+  padding: 10px 15px;
+  transition: filter 0.2s ease-in-out;
+}
+
+.resortLogoActive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafffa;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  width: 75%;
+  height: 60%;
+  padding: 10px 15px;
+  filter: brightness(85%);
+  cursor: default;
+}
+
+.resortLogo:hover {
+  filter: brightness(85%);
+  transition: filter 0.2s ease-in-out;
+}

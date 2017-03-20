@@ -9,6 +9,16 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    if @user
+      @user.destroy
+      render 'api/users/show'
+    else
+      render json: ['user not found'], status: 404
+    end
+  end
+
   private
 
   def user_params

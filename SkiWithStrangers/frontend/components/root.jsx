@@ -3,8 +3,10 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import App from './app';
-import ResortsContainer from './resorts_container';
-import SessionFormContainer from './session_form_container';
+import ResortsIndexContainer from './resorts/resorts_index_container';
+import ResortsDetailContainer from './resorts/resorts_detail_container';
+import SessionFormContainer from './session_form/session_form_container';
+import EventsContainer from './greeting/greeting_container';
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
@@ -31,11 +33,15 @@ const Root = ({ store }) => {
           <Route
               path='/signup'
               component={ SessionFormContainer }/>
+          <Route
+            path='/resorts'
+            component={ ResortsIndexContainer }
+            onEnter={_ensureLoggedIn}>
             <Route
-              path='/resorts'
-              component={ ResortsContainer }
-              onEnter={_ensureLoggedIn} />
-          </Route>
+              path='/resorts/:id'
+              component={ ResortsDetailContainer } />
+          </ Route>
+        </ Route>
       </Router>
     </Provider>
   );

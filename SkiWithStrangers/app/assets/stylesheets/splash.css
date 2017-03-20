@@ -1,0 +1,37 @@
+div.splash-container {
+  height: calc(100% - 75px);
+  width: 100%;
+  background-image: url('http://res.cloudinary.com/whasting/image/upload/v1489957410/snowboarding_ncppa0.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.splash {
+  background-color: rgba(0, 0, 0, 0.30);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid black;
+  height: calc(100% - 76px);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+
+  justify-content: center;
+}
+
+.test-detail {
+  position: absolute;
+  right: 0;
+  background-color: rgba(110, 158, 212, .8);
+  height: 100%;
+  width: calc(100% - 400px);
+}

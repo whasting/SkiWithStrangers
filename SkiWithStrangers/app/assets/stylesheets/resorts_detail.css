@@ -1,0 +1,19 @@
+.resorts-detail-wrapper {
+  position: absolute;
+  left: 320px;
+  height: 100%;
+  width: calc(100% - 320px);
+  background-color: rgba(110, 158, 212, .7);
+}
+
+.resortLogoDetail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafffa;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  width: 262.75px;
+  height: 84px;
+  padding: 10px 15px;
+  transition: filter 0.2s ease-in-out;
+}
