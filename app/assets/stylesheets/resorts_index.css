@@ -3,7 +3,7 @@
   left: 0;
   bottom: 0;
   width: 320px;
-  height: 95%;
+  height: 100%;
   overflow-y: scroll;
   background-color: rgba(255, 255, 255, .75);
 }
@@ -40,6 +40,20 @@
   height: 60%;
   padding: 10px 15px;
   transition: filter 0.2s ease-in-out;
+}
+
+.resortLogoActive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafffa;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  width: 75%;
+  height: 60%;
+  padding: 10px 15px;
+  filter: brightness(85%);
+  cursor: default;
 }
 
 .resortLogo:hover {

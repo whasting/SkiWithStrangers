@@ -8,3 +8,7 @@ export const selectAllResorts = ({ resorts }) => {
 export const selectResort = ({ resort }) => {
   return values(resort)[0];
 };
+
+export const selectEvents = ({ events }) => {
+  return values(events);
+};
