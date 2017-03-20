@@ -300,16 +300,16 @@ class SessionForm extends React.Component {
   renderNav() {
     return (
       <div
-        className="nav-buttons"
+        className="nav-buttons-logged-out"
         onClick={this.openModal}>
         <Link
           to="/signup"
           activeClassName="current"
-          className="nav-button">Sign Up</Link>
+          className="nav-button-logged-out">Sign Up</Link>
         <Link
           to="/login"
           activeClassName="current"
-          className="nav-button">Log In</Link>
+          className="nav-button-logged-out">Log In</Link>
       </div>
     );
   }

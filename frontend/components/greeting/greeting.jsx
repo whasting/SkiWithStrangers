@@ -40,10 +40,10 @@ class Greeting extends React.Component {
             <h1>Ski With Strangers</h1>
           </div>
         </div>
-        <div className="nav-buttons">
+        <div className="nav-buttons-logged-in">
           <Link
             onClick={this.handleLogout}
-            className="nav-button">Log Out</Link>
+            className="nav-button-logged-in">Log Out</Link>
         </div>
       </nav>
     );
