@@ -44,11 +44,10 @@
   transition: filter 0.3s ease-in-out;
 }
 
-.auth-form-hidden {
+.ReactModal__Content span {
   position: absolute;
-  width: 504px;
   height: 304px;
-  opacity: 0;
+  width: 504px;
 }
 
 .auth-form {
@@ -60,8 +59,7 @@
   background-color: #f6f3fa;
   font-size: 20px;
   font-family: 'Roboto Condensed', sans-serif;
-  opacity: 1;
-  transition: opacity 1s;
+  transition: 1s;
 }
 
 .tabs {

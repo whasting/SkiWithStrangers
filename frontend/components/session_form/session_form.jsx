@@ -1,29 +1,29 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 import Modal from 'react-modal';
-import { findDOMNode } from 'react-dom';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const customStyles = {
   overlay: {
     height: '100%',
     width: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)'
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    transition: 'background-color 0.75s'
   },
 
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    transform             : 'translate(-50%, -50%)',
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    transform: 'translate(-50%, -50%)',
     width: '500px',
     height: '300px',
     padding: '2px',
-    backgroundColor: 'transparent',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     border: 'none',
-    transition: 'opacity 0.5s'
+    backgroundColor: 'transparent'
   }
 };
 
@@ -34,7 +34,8 @@ class SessionForm extends React.Component {
       username: "",
       password: "",
       password2: "",
-      modalOpen: false
+      modalOpen: false,
+      animationType: 'none'
     };
 
     this.openModal = this.openModal.bind(this);
@@ -44,6 +45,7 @@ class SessionForm extends React.Component {
     this.tabSwitch = this.tabSwitch.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
+    this.renderNav = this.renderNav.bind(this);
   }
 
   componentWillMount() {
@@ -51,27 +53,21 @@ class SessionForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.visible !== this.props.visible) {
-      console.log("TEST");
-      if (newProps.visible) {
-        $(findDOMNode(this)).stop(true, true).fadeIn('slow');
-      } else {
-        $(findDOMNode(this)).stop(true, true).fadeOut('slow');
-      }
-    }
-
-
     this.props = newProps;
     this.redirectIfLoggedIn();
 	}
 
-  openModal(e) {
+  openModal() {
     this.setState({modalOpen: true});
   }
 
   closeModal() {
     this.setState({modalOpen: false});
   }
+
+  // setAnimationType(type) {
+  //   this.setState({animationType: type});
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -210,91 +206,112 @@ class SessionForm extends React.Component {
   renderForm() {
     if (this.props.formType === 'signup') {
       return (
-        <div className="input-fields">
-          <div className="text-inputs">
-            <div className="username-container">
-              <input
-                type="text"
-                className="signup-username"
-                value={this.state.username}
-                onChange={this.handleChange}
-                placeholder="Username" />
+        <div className="login-signup">
+          <div className="input-fields">
+            <div className="text-inputs">
+              <div className="username-container">
+                <input
+                  type="text"
+                  className="signup-username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                  placeholder="Username" />
+              </div>
+              <div className="password-container">
+                <input
+                  type="password"
+                  className="signup-password"
+                  onChange={this.handleChange}
+                  value={this.state.password}
+                  placeholder="Password" />
+                <input
+                  type="password"
+                  className="signup-password2"
+                  onChange={this.handleChange}
+                  value={this.state.password2}
+                  placeholder="Re-enter Password" />
+              </div>
             </div>
-            <div className="password-container">
-              <input
-                type="password"
-                className="signup-password"
-                onChange={this.handleChange}
-                value={this.state.password}
-                placeholder="Password" />
-              <input
-                type="password"
-                className="signup-password2"
-                onChange={this.handleChange}
-                value={this.state.password2}
-                placeholder="Re-enter Password" />
+            <div className="errors-container">
+              <div className="errors">
+                {this.renderErrors()}
+              </div>
             </div>
-          </div>
-          <div className="errors-container">
-            <div className="errors">
-              {this.renderErrors()}
+            <div className="buttons-signup">
+              <input
+                type="submit"
+                className="sign-up-button"
+                onClick={this.handleSignup}
+                value="Sign Up" />
+              <input
+                type="submit"
+                className="demo-button"
+                onClick={this.handleDemo}
+                value="Demo" />
             </div>
-          </div>
-          <div className="buttons-signup">
-            <input
-              type="submit"
-              className="sign-up-button"
-              onClick={this.handleSignup}
-              value="Sign Up" />
-            <input
-              type="submit"
-              className="demo-button"
-              onClick={this.handleDemo}
-              value="Demo" />
           </div>
         </div>
       );
     } else {
       return (
-        <div className="input-fields">
-          <div className="text-inputs">
-            <div className="username-container">
+        <div className="login-signup">
+          <div className="input-fields">
+            <div className="text-inputs">
+              <div className="username-container">
+                <input
+                  type="text"
+                  className="login-username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                  placeholder="Username" />
+              </div>
+              <div className="password-container">
+                <input
+                  type="password"
+                  className="login-password"
+                  onChange={this.handleChange}
+                  value={this.state.password}
+                  placeholder="Password" />
+              </div>
+            </div>
+            <div className="errors-container">
+              <div className="errors">
+                {this.renderErrors()}
+              </div>
+            </div>
+            <div className="buttons">
               <input
-                type="text"
-                className="login-username"
-                value={this.state.username}
-                onChange={this.handleChange}
-                placeholder="Username" />
-            </div>
-            <div className="password-container">
+                type="submit"
+                className="log-in-button"
+                onClick={this.handleSubmit}
+                value="Log In" />
               <input
-                type="password"
-                className="login-password"
-                onChange={this.handleChange}
-                value={this.state.password}
-                placeholder="Password" />
+                type="submit"
+                className="demo-button"
+              onClick={this.handleDemo}
+              value="Demo" />
             </div>
-          </div>
-          <div className="errors-container">
-            <div className="errors">
-              {this.renderErrors()}
-            </div>
-          </div>
-          <div className="buttons">
-            <input
-              type="submit"
-              className="log-in-button"
-              onClick={this.handleSubmit}
-              value="Log In" />
-            <input
-              type="submit"
-              className="demo-button"
-            onClick={this.handleDemo}
-            value="Demo" />
           </div>
         </div>
       );
     }
+  }
+
+  renderNav() {
+    return (
+      <div
+        className="nav-buttons"
+        onClick={this.openModal}>
+        <Link
+          to="/signup"
+          activeClassName="current"
+          className="nav-button">Sign Up</Link>
+        <Link
+          to="/login"
+          activeClassName="current"
+          className="nav-button">Log In</Link>
+      </div>
+    );
   }
 
   render() {
@@ -306,6 +323,7 @@ class SessionForm extends React.Component {
     }
     return (
       <div className="auth-wrapper">
+        {this.renderNav()}
         <div className="landing-wrapper">
           <h1 className="landing-message">Get Out and Ski... With Strangers!</h1>
           <button
@@ -316,7 +334,8 @@ class SessionForm extends React.Component {
           isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Auth Modal" >
+          contentLabel="Auth Modal"
+          animationType={'slide'} >
             <div className="auth-form">
               {this.renderTabs()}
               {this.renderForm()}

@@ -1,0 +1,7 @@
+.resorts-detail {
+  position: absolute;
+  left: 320px;
+  height: 100%;
+  width: calc(100% - 320px);
+  background-color: rgba(110, 158, 212, .7);
+}

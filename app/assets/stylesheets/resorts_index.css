@@ -1,17 +1,32 @@
 .resortsSidebar {
   position: absolute;
   left: 0;
-  width: 400px;
-  height: 100%;
+  bottom: 0;
+  width: 320px;
+  height: 95%;
   overflow-y: scroll;
-  background-color: rgba(255, 255, 255, .75)
+  background-color: rgba(255, 255, 255, .75);
+}
+
+.resorts-index-header {
+  position: fixed;
+  left: 0;
+  width: 320px;
+  height: calc(5% - 2px);
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, .75);
+  border-bottom: 2px solid black;
+  z-index: 2;
 }
 
 .resortsSidebarItem {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 120px;
+  height: 100px;
 }
 
 .resortLogo {

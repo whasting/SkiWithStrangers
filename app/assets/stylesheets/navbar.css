@@ -44,11 +44,13 @@
 }
 
 .nav-buttons {
-  align-self: center;
+  position: absolute;
+  top: -46.5px;
+  right: 0;
 }
 
 .nav-button {
-  padding: 26.5px;
+  padding: 28px;
   color: #E8E8E8;
   transition: background-color .25s, border .5s, ease-in-out;
 }

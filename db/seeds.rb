@@ -22,6 +22,7 @@ User.destroy_all
 
 u1 = User.create(username: "demo_user", password: "passwordpassword")
 u2 = User.create(username: "wade", password: "password", is_host: true, photo_url: "http://res.cloudinary.com/whasting/image/upload/v1489776959/sailin_jkgbvd.jpg")
+u3 = User.create(username: "brittany", password: "password", is_host: true)
 
 #  id              :integer          not null, primary key
 #  name            :string           not null
@@ -101,3 +102,37 @@ r9 = Resort.create(
   description: "Perched atop Tahoe’s Donner Summit, Sugar Bowl Resort is the closest major resort to Sacramento and the Bay Area. Sugar Bowl offers terrain to accommodate beginners and challenge experts, spreading across four peaks serviced by 13 lifts and 1500 acres with 500 inches of annual snowfall. As one of the country's oldest ski areas, Sugar Bowl has kept it's classic ski atmosphere while providing modern amenities. Guests can access the resort through two portals--a quick ride on the historic gondola to the snow bound Village or slope side parking at the modern Mt. Judah Day Lodge.",
   address: '629 Sugar Bowl Rd, Norden, CA 95724',
   resort_logo_url: 'http://res.cloudinary.com/whasting/image/upload/c_scale,h_55,w_200/v1489788062/sugarbowl_iope69.png')
+
+  # Table name: events
+  #
+  #  id         :integer          not null, primary key
+  #  title      :string           not null
+  #  body       :text
+  #  date       :datetime         not null
+  #  resort_id  :integer          not null
+  #  host_id    :integer          not null
+  #  created_at :datetime         not null
+  #  updated_at :datetime         not null
+
+Event.destroy_all
+
+e1 = Event.create(
+  title: "Shredding at Boreal",
+  body: "We're a bunch of pros just loving life.",
+  date: "3/3/2018",
+  resort_id: r1.id,
+  host_id: u2.id)
+
+e2 = Event.create(
+  title: "Noobs only!",
+  body: "If you're not an absolute beginner, this event isn't for you",
+  date: "2/1/2018",
+  resort_id: r1.id,
+  host_id: u3.id)
+
+e3 = Event.create(
+  title: "Hitting dat Heavenly powder at Heavenly",
+  body: "Fun for the whole family, come on down!",
+  date: "4/20/2017",
+  resort_id: r2.id,
+  host_id: u2.id)

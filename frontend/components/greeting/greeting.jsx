@@ -23,16 +23,6 @@ class Greeting extends React.Component {
             <h1>Ski With Strangers</h1>
           </div>
         </div>
-        <div className="nav-buttons">
-          <Link
-            to="/signup"
-            activeClassName="current"
-            className="nav-button">Sign Up</Link>
-          <Link
-            to="/login"
-            activeClassName="current"
-            className="nav-button">Log In</Link>
-        </div>
       </nav>
     );
   }

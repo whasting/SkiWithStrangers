@@ -15,7 +15,7 @@ export const receiveResorts = () => dispatch => (
 
 export const receiveResort = id => dispatch => (
   APIUtil.receiveResort(id)
-    .then(resort => dispatch(fetchResort(resort)))
+    .then(resort => dispatch(fetchResort(resort)))  
 );
 
 export const createResort = resort => dispatch => (
