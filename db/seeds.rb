@@ -126,13 +126,13 @@ e1 = Event.create(
 e2 = Event.create(
   title: "Noobs only!",
   body: "If you're not an absolute beginner, this event isn't for you",
-  date: "2/1/2018",
+  date: "1/2/2018",
   resort_id: r1.id,
   host_id: u3.id)
 
 e3 = Event.create(
   title: "Hitting dat Heavenly powder at Heavenly",
   body: "Fun for the whole family, come on down!",
-  date: "4/20/2017",
+  date: "20/4/2017",
   resort_id: r2.id,
   host_id: u2.id)
