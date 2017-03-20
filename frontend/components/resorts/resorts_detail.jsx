@@ -49,7 +49,7 @@ class ResortsDetail extends React.Component {
           <div className="resort-events">
             {
               resortEvents.map((event, idx) => (
-              <p>{event.title}</p>
+              <p key={idx}>{event.title}</p>
               ))
             }
           </div>
