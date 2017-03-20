@@ -1,7 +1,7 @@
 div.splash-container {
   height: calc(100% - 75px);
   width: 100%;
-  background-image: url('http://res.cloudinary.com/whasting/image/upload/v1489957410/snowboarding_ncppa0.jpg');
+  background-image: url('https://res.cloudinary.com/whasting/image/upload/v1489957410/snowboarding_ncppa0.jpg');
   background-size: cover;
   background-position: center;
 }

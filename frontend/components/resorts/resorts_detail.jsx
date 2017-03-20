@@ -45,7 +45,7 @@ class ResortsDetail extends React.Component {
     if (this.props.resort) {
       if (this.props.resort.events) {
         let resortEvents = selectEvents(this.props.resort);
-        console.log(resortEvents);
+        // console.log(resortEvents);
         return (
           <div className="resort-events">
             {

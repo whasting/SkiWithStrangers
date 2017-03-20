@@ -60,7 +60,7 @@ class Navbar extends React.Component {
         <div className="logo">
           <div className="logo-img">
             <img
-              src="http://res.cloudinary.com/whasting/image/upload/c_scale,h_60,w_60/v1489951965/skier_iqb8ty.png"
+              src="https://res.cloudinary.com/whasting/image/upload/c_scale,h_60,w_60/v1489951965/skier_iqb8ty.png"
               className="logo-img"/>
           </div>
           <div className="logo-text">
@@ -89,7 +89,7 @@ class Navbar extends React.Component {
         <div className="logo">
           <div className="logo-img">
             <img
-              src="http://res.cloudinary.com/whasting/image/upload/c_scale,h_60,w_60/v1489951965/skier_iqb8ty.png"
+              src="https://res.cloudinary.com/whasting/image/upload/c_scale,h_60,w_60/v1489951965/skier_iqb8ty.png"
               className="logo-img"/>
           </div>
           <div className="logo-text">
