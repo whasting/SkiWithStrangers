@@ -12,7 +12,7 @@ export const receiveEvents = () => dispatch => (
 );
 
 export const receiveEvent = id => dispatch => (
-  APIUtil.reciveEvent(id)
+  APIUtil.receiveEvent(id)
     .then(event => dispatch(fetchEvent(event)))
 );
 
@@ -34,11 +34,11 @@ export const deleteEvent = id => dispatch => (
 //sync
 
 const fetchEvents = events => ({
-  action: RECEIVE_EVENTS,
+  type: RECEIVE_EVENTS,
   events
 });
 
 const fetchEvent = event => ({
-  action: RECEIVE_EVENT,
+  type: RECEIVE_EVENT,
   event
 });

@@ -9,6 +9,10 @@ export const selectResort = ({ resort }) => {
   return values(resort)[0];
 };
 
+export const selectEvent = ({ event }) => {
+  return values(event)[0];
+};
+
 export const selectEvents = ({ events }) => {
   return values(events);
 };

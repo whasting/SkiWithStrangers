@@ -5,35 +5,44 @@
 
 .resorts-detail-wrapper {
   position: absolute;
-  left: 320px;
+  left: 275px;
   height: 100%;
-  width: calc(100% - 320px);
+  width: calc(100% - 275px);
   background-color: rgba(110, 158, 212, .7);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: scroll;
 }
 
 .resort-detail {
-  position: absolute;
-  height: 100%;
-  width: calc(100% - 250px);
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.75)
+  width: 85%;
+  min-height: 45%;
+  height: auto;
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 15px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.resort-logo-detail {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .resort-logo {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.resortLogoDetail {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 100%;
+  width: auto;
   height: 8%;
-  padding: 8px 15px;
+  padding: 12px 25px;
   transition: filter 0.2s ease-in-out;
 }
 
@@ -53,18 +62,14 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  height: 80px;
   line-height: 150%;
   overflow: hidden;
 }
 
 .resort-description p {
   width: 600px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
 
 .more-resort-info {
@@ -81,17 +86,10 @@
   transition: filter 0.2s ease-in-out;
 }
 
-.resort-events-and-detail {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  width: 30%;
-}
-
 .resort-events-detail {
-  width: 250px;
-  height: 100%;
+  width: 85%;
+  height: auto;
+  padding: 15px;
   left: 0;
   font-size: 16px;
   border: 2px solid rgba(0, 0, 0, 0.3);
@@ -99,10 +97,26 @@
   background-color: rgba(255, 255, 255, 0.90);
 }
 
+.events-header {
+  width: 100%;
+  height: 36px;
+  margin-left: 12px;
+  font-size: 20px;
+}
+
+.resort-events {
+  height: auto;
+  display: inline-flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
 
 .event-item {
-  border-bottom: 1px solid black;
+  height: 150px;
+  width: 150px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  margin: 10px;
   background-color: rgba(255, 255, 255, 0.90);
   transition: filter 0.2s ease-in-out;
 }

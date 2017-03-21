@@ -7,9 +7,7 @@ const EventReducer = (state = {}, action) => {
   let newState;
   switch(action.type) {
     case RECEIVE_EVENT:
-      newState = merge({}, state);
-      newState[action.event.id] = action.event;
-      return newState;
+      return action.event;
     case DELETE_EVENT:
       newState = merge({}, state);
       delete newState[action.event.id];
@@ -18,3 +16,5 @@ const EventReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export default EventReducer;

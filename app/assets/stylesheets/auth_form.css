@@ -32,7 +32,7 @@
   color: #FFFFFF;
   height: 55px;
   width: 225px;
-  border: 2px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px black;
   border-radius: 10px;
   cursor: pointer;
   font-size: 24px;
