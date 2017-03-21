@@ -1,13 +1,13 @@
 div.splash-container {
   height: calc(100% - 75px);
   width: 100%;
-  background-image: url('http://res.cloudinary.com/whasting/image/upload/v1489957410/snowboarding_ncppa0.jpg');
+  background-image: url('https://res.cloudinary.com/whasting/image/upload/v1489957410/snowboarding_ncppa0.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .splash {
-  background-color: rgba(0, 0, 0, 0.30);
+  background-color: rgba(0, 0, 0, 0.15);
   position: absolute;
   bottom: 0;
   left: 0;

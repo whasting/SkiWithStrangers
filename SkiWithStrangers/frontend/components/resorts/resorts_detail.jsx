@@ -42,27 +42,39 @@ class ResortsDetail extends React.Component {
   }
 
   renderEvents() {
+    let resortEvents;
     if (this.props.resort) {
       if (this.props.resort.events) {
-        let resortEvents = selectEvents(this.props.resort);
-        return (
-          <div className="resort-events">
-            {
-              resortEvents.map((event, idx) => (
+        resortEvents = selectEvents(this.props.resort);
+        resortEvents =
+          resortEvents.map((event, idx) => (
+            <div key={idx} className="event-item">
               <p>{event.title}</p>
-              ))
-            }
-          </div>
-        );
+              <p>{event.date.slice(0, 10)}</p>
+            </div>
+          ));
+        } else {
+          resortEvents = (
+            <div className="event-item">
+              <p>No upcoming events :(</p>
+            </div>
+          );
+        }
       }
-    }
+    return (
+      <div className="resort-events">
+        {resortEvents}
+      </div>
+    );
   }
 
   render() {
     return (
       <div className="resorts-detail-wrapper">
         {this.renderResort()}
-        {this.renderEvents()}
+        <div className="resort-events-detail">
+          {this.renderEvents()}
+        </div>
       </div>
     );
   }

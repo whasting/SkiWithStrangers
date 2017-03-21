@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
   has_many :events,
     foreign_key: :host_id
+  has_many :attendances
 
   before_save :default_values
   attr_reader :password
