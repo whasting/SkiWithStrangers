@@ -68,7 +68,8 @@ class ResortsDetail extends React.Component {
 
   closeModal() {
     hashHistory.replace(`/resorts/${this.props.params.id[0]}`);
-    this.setState({modalOpen: false, renderChild: true});
+    console.log(this.props);
+    this.setState({modalOpen: false, renderChild: false});
   }
 
   renderResort() {
