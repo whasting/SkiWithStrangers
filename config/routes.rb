@@ -8,5 +8,6 @@ Rails.application.routes.draw do
       resources :events, except: [:new, :edit]
     end
     resources :events, except: [:new, :edit]
+    resources :attendances, except: [:new, :edit]
   end
 end

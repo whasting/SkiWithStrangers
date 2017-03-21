@@ -16,7 +16,7 @@ class Greeting extends React.Component {
         <div className="logo">
           <div className="logo-img">
             <img
-              src="http://res.cloudinary.com/whasting/image/upload/c_scale,h_60,w_60/v1489951965/skier_iqb8ty.png"
+              src="https://res.cloudinary.com/whasting/image/upload/c_scale,h_60,w_60/v1489951965/skier_iqb8ty.png"
               className="logo-img"/>
           </div>
           <div className="logo-text">
@@ -28,12 +28,13 @@ class Greeting extends React.Component {
   }
 
   personalGreeting() {
+    
     return (
       <nav className="navbar">
         <div className="logo">
           <div className="logo-img">
             <img
-              src="http://res.cloudinary.com/whasting/image/upload/c_scale,h_60,w_60/v1489951965/skier_iqb8ty.png"
+              src="https://res.cloudinary.com/whasting/image/upload/c_scale,h_60,w_60/v1489951965/skier_iqb8ty.png"
               className="logo-img"/>
           </div>
           <div className="logo-text">
@@ -41,6 +42,18 @@ class Greeting extends React.Component {
           </div>
         </div>
         <div className="nav-buttons-logged-in">
+          <Link
+            to="/dashboard"
+            activeClassName="current"
+            className="nav-button-logged-in">Dashboard</Link>
+          <Link
+            to="/resorts"
+            activeClassName="current"
+            className="nav-button-logged-in">Resorts and Events</Link>
+          <Link
+            to="/hosts"
+            activeClassName="current"
+            className="nav-button-logged-in">Hosts</Link>
           <Link
             onClick={this.handleLogout}
             className="nav-button-logged-in">Log Out</Link>

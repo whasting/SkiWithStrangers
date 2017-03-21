@@ -20,9 +20,12 @@
 
 User.destroy_all
 
-u1 = User.create(username: "demo_user", password: "passwordpassword")
-u2 = User.create(username: "wade", password: "password", is_host: true, photo_url: "https://res.cloudinary.com/whasting/image/upload/v1489776959/sailin_jkgbvd.jpg")
-u3 = User.create(username: "brittany", password: "password", is_host: true)
+u1 = User.create(username: "demo_user", name: "Demo User", password: "passwordpassword")
+u2 = User.create(username: "wade", name: "Wade H", password: "password", is_host: true, photo_url: "https://res.cloudinary.com/whasting/image/upload/v1489776959/sailin_jkgbvd.jpg")
+u3 = User.create(username: "brittany", name: "Brittany K", password: "password", is_host: true)
+u4 = User.create(username: "max", name: "Max M", password: "password", is_host: true)
+u5 = User.create(username: "tom", name: "Tom D", password: "password", is_host: true)
+u6 = User.create(username: "matt", name: "Matt M", password: "password", is_host: true)
 
 #  id              :integer          not null, primary key
 #  name            :string           not null
@@ -101,7 +104,7 @@ r9 = Resort.create(
   name: 'Sugar Bowl',
   description: "Perched atop Tahoe’s Donner Summit, Sugar Bowl Resort is the closest major resort to Sacramento and the Bay Area. Sugar Bowl offers terrain to accommodate beginners and challenge experts, spreading across four peaks serviced by 13 lifts and 1500 acres with 500 inches of annual snowfall. As one of the country's oldest ski areas, Sugar Bowl has kept it's classic ski atmosphere while providing modern amenities. Guests can access the resort through two portals--a quick ride on the historic gondola to the snow bound Village or slope side parking at the modern Mt. Judah Day Lodge.",
   address: '629 Sugar Bowl Rd, Norden, CA 95724',
-  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_55,w_200/v1489788062/sugarbowl_iope69.png')
+  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_55,w_200/v1490048324/sugarbowl_sz5bai.png')
 
   # Table name: events
   #
@@ -136,3 +139,24 @@ e3 = Event.create(
   date: "20/4/2017",
   resort_id: r2.id,
   host_id: u2.id)
+
+e4 = Event.create(
+  title: "Happy Fun Ski Time",
+  body: "We're headed to Boreal on the 15th of February, come snowboard your valentine woes away!",
+  date: "15/2/2018",
+  resort_id: r1.id,
+  host_id: u2.id)
+
+e5 = Event.create(
+  title: "Boreal Gnar Gnar Pow Pow",
+  body: "There's like, 50 ft of powder this year bruh! Can you say backflips?",
+  date: "5/3/2018",
+  resort_id: r1.id,
+  host_id: u4.id)
+
+e6 = Event.create(
+  title: "Beginning to intemediate Snowboarders",
+  body: "Hi! We're from Sacramento and we want to desecrate the pristine powder that's forecasted to fall the day before our trip, come with us!",
+  date: "1/4/2018",
+  resort_id: r1.id,
+  host_id: u5.id)

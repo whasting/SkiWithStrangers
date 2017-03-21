@@ -60,3 +60,7 @@
   filter: brightness(85%);
   transition: filter 0.2s ease-in-out;
 }
+
+.resortLogo img {
+  filter: grayscale(100%);
+}

@@ -16,14 +16,13 @@ const customStyles = {
     left: '50%',
     right: 'auto',
     transform: 'translate(-50%, -50%)',
-    width: '500px',
-    height: '300px',
     padding: '2px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     border: 'none',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    overflow: 'visible'
   }
 };
 
@@ -110,19 +109,22 @@ class SessionForm extends React.Component {
       usernameFill += demoUsername[i];
       i++;
       this.setState({username: usernameFill});
+
       if (demoUsername.length === i) {
         clearInterval(userFill);
         i = 0;
+
         let passFill = setInterval(() => {
           passwordFill += demoPassword[i];
           i++;
           this.setState({password: passwordFill});
+
           if (demoPassword.length === i) {
             const user = this.state;
             setTimeout(() => this.props.processForm(user), 120);
             clearInterval(passFill);
           }
-        }, 30);
+        }, 50);
       }
     }, 75);
   }

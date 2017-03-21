@@ -12,7 +12,7 @@ class App extends React.Component {
           <GreetingContainer />
           <div className="splash-container">
             <div className="splash">
-            {this.props.children}
+              {this.props.children}
             </div>
           </div>
       </div>
