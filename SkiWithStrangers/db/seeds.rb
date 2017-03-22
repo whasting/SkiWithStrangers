@@ -20,12 +20,12 @@
 
 User.destroy_all
 
-u1 = User.create(username: "demo_user", name: "Demo User", password: "passwordpassword")
+u1 = User.create(username: "demo_user", name: "Demo User", password: "passwordpassword", photo_url: "https://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
 u2 = User.create(username: "wade", name: "Wade H", password: "password", is_host: true, photo_url: "https://res.cloudinary.com/whasting/image/upload/v1489776959/sailin_jkgbvd.jpg")
-u3 = User.create(username: "brittany", name: "Brittany K", password: "password", is_host: true)
-u4 = User.create(username: "max", name: "Max M", password: "password", is_host: true)
-u5 = User.create(username: "tom", name: "Tom D", password: "password", is_host: true)
-u6 = User.create(username: "matt", name: "Matt M", password: "password", is_host: true)
+u3 = User.create(username: "brittany", name: "Brittany K", password: "password", is_host: true, photo_url: "https://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
+u4 = User.create(username: "max", name: "Max M", password: "password", is_host: true, photo_url: "https://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
+u5 = User.create(username: "tom", name: "Tom D", password: "password", is_host: true, photo_url: "https://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
+u6 = User.create(username: "matt", name: "Matt M", password: "password", is_host: true, photo_url: "https://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
 
 #  id              :integer          not null, primary key
 #  name            :string           not null
@@ -44,19 +44,19 @@ Boreal Ski Resort is the closest and best valued resort to the Sacramento and Ba
 
 First skiing or snowboarding trip to Tahoe? Just learning? Boreal Ski Resort is perfect for beginner snowboarders and skiers. There is a reason more than 400,000 adults and kids have learned to ski and snowboard at Boreal. Boreal's instructors are trained and qualified, and love what they do. The beginner hill at Boreal is gentle and easy to get to, just steps from the lodge and rental shop.",
   address: '19749 Boreal Ridge Rd, Soda Springs, CA 95728',
-  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_55,w_200/v1489776231/boeralLogo_nnhk22.png')
+  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_75,w_225/v1489776231/boeralLogo_nnhk22.png')
 
 r2 = Resort.create(
   name: 'Heavenly',
   description: "Overlooking the sapphire-blue waters of Lake Tahoe, Heavenly ski resort is one of the most unique snowsports destinations on the planet. With a higher elevation and the most skiable terrain in Tahoe, you have more hidden glades to explore and groomers to rip than any Lake Tahoe resort. Off the slopes you’ll find more activities and après ski choices than you know what to do with.",
   address: '4080 Lake Tahoe Blvd, South Lake Tahoe, CA 96150',
-  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_55,w_200/v1489776231/heavenly-logo_m0rotq.png')
+  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_75,w_225/v1489776231/heavenly-logo_m0rotq.png')
 
 r3 = Resort.create(
   name: 'Homewood',
   description: "Homewood Mountain Resort boasts some of, if not the best views in California’s entire Lake Tahoe region. Easily accessible from Interstate 80 and California Highway 89, the resort rises 1,650 vertical feet from the shores of beautiful Lake Tahoe to its 7,880’ summit elevation. The resort averages 450 inches of snowfall and 300 days of sunshine each year. While there are beginner terrain options (15%) and advanced terrain (35%), skiers and snowboarders often come to enjoy an abundance of intermediate terrain (50% of the mountain) while taking in the views of crystal clear Lake Tahoe. Guests can also enjoy Homewood’s West Shore Café & Inn, with world class dining options in an intimate lakefront inn setting.",
   address: '5145 W Lake Blvd, Homewood, CA 96141',
-  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_55,w_200/v1489776231/homewood-logo-300_ojemwp.png')
+  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_75,w_225/v1489776231/homewood-logo-300_ojemwp.png')
 
 r4 = Resort.create(
   name: 'Kirkwood',
@@ -64,7 +64,7 @@ r4 = Resort.create(
 
 The village contains ski in, ski out accommodations with adjacent shops and restaurants. The resort also plays host to other activities including cross country skiing, snow shoeing, dog sled tours and backcountry access.",
   address: '1501 Kirkwood Meadows Drive, Kirkwood, CA 95646',
-  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_55,w_200/v1489776231/kirkwood_fpwg8p.png')
+  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_75,w_225/v1489776231/kirkwood_fpwg8p.png')
 
 r5 = Resort.create(
   name: 'Mt. Rose',
@@ -74,7 +74,7 @@ Good powder skiing - and the Mt. Rose Chutes for serious skiers and riders - is 
 
 Mt. Rose is an excellent choice for the first – or last – days of a Lake Tahoe vacation, or for those staying in Reno and enjoying nightlife in \“The Biggest Little City in the World\”",
   address: '22222 Mt Rose Hwy, Reno, NV 89511',
-  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_55,w_200/v1489776231/mtRose_efoh9j.png')
+  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_75,w_225/v1489776231/mtRose_efoh9j.png')
 
 r6 = Resort.create(
   name: 'North Star',
@@ -82,7 +82,7 @@ r6 = Resort.create(
 
 The resort is home to impeccable grooming, incredible tree skiing and a variety of terrain options suitable for any ability level. The resort also contains world-class terrain parks and a 22-foot superpipe designed by Olympian Shaun White.",
   address: '5001 Northstar Dr, Truckee, CA 96161',
-  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_55,w_200/v1489776231/northStar_b8gmjx.png')
+  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_75,w_225/v1489776231/northStar_b8gmjx.png')
 
 r7 = Resort.create(
   name: 'Sierra-at-Tahoe',
@@ -90,7 +90,7 @@ r7 = Resort.create(
 
 The 46 available trails average 400 inches of snow per year. Blizzard Mountain provides tubing hills and a snowplay area. In addition, visitors will find 3 miles of snowshoe trails.",
   address: '1111 Sierra at Tahoe Rd, Twin Bridges, CA 95735',
-  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_55,w_200/v1489776232/sierra_qpamxk.png')
+  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_75,w_225/v1489776232/sierra_qpamxk.png')
 
 r8 = Resort.create(
   name: 'Squaw Valley Alpine Meadows',
@@ -98,13 +98,13 @@ r8 = Resort.create(
 
 Snowfall averages 450 inches, providing one of the longest ski and snowboard seasons in Lake Tahoe and establishing Squaw | Alpine as a top destination for spring skiing and boarding. Squaw | Alpine also boasts one of the region’s only mountain-top beginner areas and several intermediate skier havens, including Shirley Lake and the newly renamed Pacific Crest Bowls.",
   address: '1960 Squaw Valley Rd, Olympic Valley, CA 96146',
-  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_55,w_200/v1489776232/squawValley_aqxuwc.png')
+  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_65,w_225/v1489776232/squawValley_aqxuwc.png')
 
 r9 = Resort.create(
   name: 'Sugar Bowl',
   description: "Perched atop Tahoe’s Donner Summit, Sugar Bowl Resort is the closest major resort to Sacramento and the Bay Area. Sugar Bowl offers terrain to accommodate beginners and challenge experts, spreading across four peaks serviced by 13 lifts and 1500 acres with 500 inches of annual snowfall. As one of the country's oldest ski areas, Sugar Bowl has kept it's classic ski atmosphere while providing modern amenities. Guests can access the resort through two portals--a quick ride on the historic gondola to the snow bound Village or slope side parking at the modern Mt. Judah Day Lodge.",
   address: '629 Sugar Bowl Rd, Norden, CA 95724',
-  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_55,w_200/v1490048324/sugarbowl_sz5bai.png')
+  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_75,w_225/v1490048324/sugarbowl_sz5bai.png')
 
   # Table name: events
   #
@@ -123,6 +123,7 @@ e1 = Event.create(
   title: "Shredding at Boreal",
   body: "We're a bunch of pros just loving life.",
   date: "3/3/2018",
+  capacity: 5,
   resort_id: r1.id,
   host_id: u2.id)
 
@@ -130,6 +131,7 @@ e2 = Event.create(
   title: "Noobs only!",
   body: "If you're not an absolute beginner, this event isn't for you",
   date: "1/2/2018",
+  capacity: 7,
   resort_id: r1.id,
   host_id: u3.id)
 
@@ -137,6 +139,7 @@ e3 = Event.create(
   title: "Hitting dat Heavenly powder at Heavenly",
   body: "Fun for the whole family, come on down!",
   date: "20/4/2017",
+  capacity: 4,
   resort_id: r2.id,
   host_id: u2.id)
 
@@ -144,6 +147,7 @@ e4 = Event.create(
   title: "Happy Fun Ski Time",
   body: "We're headed to Boreal on the 15th of February, come snowboard your valentine woes away!",
   date: "15/2/2018",
+  capacity: 5,
   resort_id: r1.id,
   host_id: u2.id)
 
@@ -151,6 +155,7 @@ e5 = Event.create(
   title: "Boreal Gnar Gnar Pow Pow",
   body: "There's like, 50 ft of powder this year bruh! Can you say backflips?",
   date: "5/3/2018",
+  capacity: 8,
   resort_id: r1.id,
   host_id: u4.id)
 
@@ -158,5 +163,10 @@ e6 = Event.create(
   title: "Beginning to intemediate Snowboarders",
   body: "Hi! We're from Sacramento and we want to desecrate the pristine powder that's forecasted to fall the day before our trip, come with us!",
   date: "1/4/2018",
+  capacity: 3,
   resort_id: r1.id,
   host_id: u5.id)
+
+Attendance.destroy_all
+
+a1 = Attendance.create(user_id: u2.id, event_id: e1.id)

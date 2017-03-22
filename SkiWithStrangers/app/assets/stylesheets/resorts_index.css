@@ -2,65 +2,49 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 320px;
+  width: 275px;
   height: 100%;
   overflow-y: scroll;
   background-color: rgba(255, 255, 255, .75);
 }
 
-.resorts-index-header {
-  position: fixed;
-  left: 0;
-  width: 320px;
-  height: calc(5% - 2px);
-  font-size: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, .75);
-  border-bottom: 2px solid black;
-  z-index: 2;
+/*ul*/
+.resorts-list {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  background-color: rgba(255, 255, 255, .0);
 }
 
-.resortsSidebarItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
+.resorts-header-active, .resorts-header-inactive {
+  font-size: 30px;
+  padding: 8px 0 8px 5px;
 }
 
-.resortLogo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fafffa;
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  width: 75%;
-  height: 60%;
-  padding: 10px 15px;
-  transition: filter 0.2s ease-in-out;
-}
-
-.resortLogoActive {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fafffa;
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  width: 75%;
-  height: 60%;
-  padding: 10px 15px;
+.resorts-header-active:hover, .resorts-header-inactive {
   filter: brightness(85%);
-  cursor: default;
+  transition: filter 0.1s ease-in-out;
 }
 
-.resortLogo:hover {
-  filter: brightness(85%);
-  transition: filter 0.2s ease-in-out;
+.resorts-list-item, .resorts-list-item-active {
+  font-size: 20px;
+  padding: 8px 0 8px 25px;
 }
 
-.resortLogo img {
-  filter: grayscale(100%);
+.resorts-list-item {
+  cursor: pointer;
+}
+
+.resorts-list-item-active {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.resorts-list-item:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.resorts-list-link {
+  color: black;
+  height: 100%;
+  width: 100%;
 }

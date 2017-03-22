@@ -73,6 +73,7 @@
   padding: 27.5px;
   color: #E8E8E8;
   transition: background-color .25s, border .5s, ease-in-out;
+  cursor: pointer;
 }
 
 .nav-button-logged-in:hover, .nav-button-logged-out:hover {

@@ -6,7 +6,7 @@ import App from './app';
 import ResortsIndexContainer from './resorts/resorts_index_container';
 import ResortsDetailContainer from './resorts/resorts_detail_container';
 import SessionFormContainer from './session_form/session_form_container';
-import EventsContainer from './greeting/greeting_container';
+import EventsContainer from './events/events_container';
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
@@ -39,7 +39,11 @@ const Root = ({ store }) => {
             onEnter={_ensureLoggedIn}>
             <Route
               path='/resorts/:id'
-              component={ ResortsDetailContainer } />
+              component={ ResortsDetailContainer }>
+              <Route
+                path='/resorts/:id/event/:id'
+                component={ EventsContainer } />
+            </ Route>
           </ Route>
         </ Route>
       </Router>

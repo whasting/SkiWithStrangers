@@ -2,9 +2,11 @@ import { connect } from 'react-redux';
 import Events from './events';
 
 import { receiveEvents, receiveEvent } from '../../actions/event_actions';
+import { selectEvents, selectEvent } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => ({
-  events: state.events
+  events: selectEvents(state),
+  event: selectEvent(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

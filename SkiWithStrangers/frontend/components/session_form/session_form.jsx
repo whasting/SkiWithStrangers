@@ -336,8 +336,7 @@ class SessionForm extends React.Component {
           isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Auth Modal"
-          animationType={'slide'} >
+          contentLabel="Auth Modal">
             <div className="auth-form">
               {this.renderTabs()}
               {this.renderForm()}

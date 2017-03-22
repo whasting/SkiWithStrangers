@@ -5,35 +5,45 @@
 
 .resorts-detail-wrapper {
   position: absolute;
-  left: 320px;
+  left: 275px;
   height: 100%;
-  width: calc(100% - 320px);
+  width: calc(100% - 275px);
   background-color: rgba(110, 158, 212, .7);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: scroll;
 }
 
 .resort-detail {
-  position: absolute;
-  height: 100%;
-  width: calc(100% - 250px);
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.75)
+  flex: none;
+  width: 85%;
+  height: auto;
+  min-height: 45%;
+  margin: 30px 0;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 15px 15px 40px 15px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.resort-logo-detail {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .resort-logo {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.resortLogoDetail {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 100%;
+  width: auto;
   height: 8%;
-  padding: 8px 15px;
+  padding: 12px 25px;
   transition: filter 0.2s ease-in-out;
 }
 
@@ -46,25 +56,24 @@
 }
 
 .resort-address h2 {
-  width: 377px;
+  width: auto;
 }
 
 .resort-description {
+  height: auto;
+  width: 75%;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  height: 80px;
+  font-size: 20px;
   line-height: 150%;
-  overflow: hidden;
+  margin: auto;
 }
 
 .resort-description p {
-  width: 600px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  height: inherit;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
 
 .more-resort-info {
@@ -81,37 +90,110 @@
   transition: filter 0.2s ease-in-out;
 }
 
-.resort-events-and-detail {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  width: 30%;
-}
-
 .resort-events-detail {
-  width: 250px;
-  height: 100%;
-  left: 0;
+  width: 85%;
+  min-width: auto;
+  height: auto;
+  height: auto;
+  padding: 15px;
+  margin: auto;
   font-size: 16px;
   border: 2px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.90);
 }
 
+.events-header {
+  width: 100%;
+  height: 36px;
+  margin-left: 12px;
+  font-size: 26px;
+}
+
+.resort-events {
+  height: auto;
+  display: inline-flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
 
 .event-item {
-  border-bottom: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.90);
+  margin: 10px;
+  color: rgba(0, 0, 0, 0.75);
+  height: 225px;
+  width: 225px;
   transition: filter 0.2s ease-in-out;
 }
 
-.event-item:hover {
-  filter: brightness(85%);
-  transition: filter 0.2s ease-in-out;
+a.event-item:hover {
+  background-color: rgba(73, 232, 33, 0.5);
+  content: "JOIN";
+}
+
+.event-item-title {
+  font-weight: bold;
+  line-height: 125%;
+  text-align: center;
+  font-size: 20px;
+  width: 200px;
+  margin: auto;
+}
+
+.event-item-host {
+  height: 110px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  margin-right: 15px;
+  margin-left: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.event-item-day-name {
+  text-align: center;
+  padding: 0;
+  padding-top: 10px;
+}
+
+.event-item-date {
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.event-item-host-name {
+  text-align: center;
+}
+
+.host-info {
+  position: relative;
+  right: 0;
+  top: -15px;
+}
+
+.host-mini {
+  height: 75px;
+  width: 75px;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.75);
+}
+
+.spots-left {
+  position: relative;
+  margin: auto;
+  height: auto;
+  bottom: 0;
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 p {
-  padding: 10px;
+  padding: 7px;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 18px;
 }

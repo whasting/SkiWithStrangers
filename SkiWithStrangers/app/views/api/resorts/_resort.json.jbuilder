@@ -2,7 +2,14 @@ json.extract! resort, :id, :name, :description, :address, :resort_logo_url
 json.set! "events" do
   resort.events.each do |event|
     json.set! event.id do
-      json.extract! event, :id, :title, :date, :resort_id
+      json.extract! event, :id, :title, :body, :date, :capacity, :resort_id
+      json.set! "guests" do
+        event.users.each do |user|
+          json.set! user.id do
+            json.extract! user, :username, :name
+          end
+        end
+      end
       json.host do
         json.extract! event.user, :id, :username, :name, :photo_url
       end

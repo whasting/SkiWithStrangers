@@ -1,0 +1,137 @@
+.event-sign-up {
+  height: 500px;
+  width: 500px;
+  background-color: white;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.event-detail-title {
+  font-weight: bold;
+  line-height: 125%;
+  text-align: center;
+  font-size: 30px;
+  width: 90%;
+  margin: auto;
+}
+
+.event-detail-host {
+  min-height: 110px;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-right: 15px;
+  margin-left: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  padding-bottom: 10px;
+}
+
+.event-detail-day-name {
+  text-align: center;
+  padding: 0;
+  padding-top: 10px;
+}
+
+.event-detail-date {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.event-body {
+  height: auto;
+  width: 330px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin-left: 3px;
+}
+
+.event-host-name {
+  text-align: center;
+  padding: 5px;
+}
+
+.detail-host-info {
+  position: relative;
+  padding-top: 7px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.host-mini {
+  height: 75px;
+  width: 75px;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.75);
+}
+
+.spots-left-detail {
+  position: relative;
+  margin-right: 15px;
+  margin-left: 15px;
+  height: auto;
+  padding: 15px 0;
+  bottom: 0;
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.guests-and-form {
+  margin: 8px 15px;
+  display: flex;
+}
+
+.event-guests-title {
+  font-size: 20px;
+}
+
+.guest-list {
+  width: 50%;
+  padding: 10px;
+}
+
+.event-guest {
+  padding: 5px 0 5px 5px;
+}
+
+.event-form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.users-name, .user-email, .user-phone {
+  padding: 5px 0 5px 5px;
+  margin: 8px 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.event-button {
+  text-align: center;
+  padding: 8px 15px;
+  margin-top: 5px;
+  background-color: #098A52;
+  color: #FFFFFF;
+  box-shadow: 2px 2px 5px black;
+}
+
+.event-button:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+p {
+  padding: 7px;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 18px;
+}
