@@ -17,15 +17,15 @@
 }
 
 .resort-detail {
+  flex: none;
   width: 85%;
-  min-height: 45%;
   height: auto;
+  min-height: 45%;
   margin: 30px 0;
   background-color: rgba(255, 255, 255, 0.75);
   padding: 15px 15px 40px 15px;
   border: 2px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .resort-logo-detail {
@@ -56,23 +56,24 @@
 }
 
 .resort-address h2 {
-  width: 377px;
+  width: auto;
 }
 
 .resort-description {
   height: auto;
+  width: 75%;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   font-size: 20px;
   line-height: 150%;
+  margin: auto;
 }
 
 .resort-description p {
   height: inherit;
   border: 2px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .more-resort-info {
@@ -91,9 +92,11 @@
 
 .resort-events-detail {
   width: 85%;
+  min-width: auto;
+  height: auto;
   height: auto;
   padding: 15px;
-  left: 0;
+  margin: auto;
   font-size: 16px;
   border: 2px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -104,7 +107,7 @@
   width: 100%;
   height: 36px;
   margin-left: 12px;
-  font-size: 20px;
+  font-size: 26px;
 }
 
 .resort-events {
@@ -115,20 +118,82 @@
 }
 
 .event-item {
-  height: 150px;
-  width: 150px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   margin: 10px;
-  background-color: rgba(255, 255, 255, 0.90);
+  color: rgba(0, 0, 0, 0.75);
+  height: 225px;
+  width: 225px;
   transition: filter 0.2s ease-in-out;
 }
 
-.event-item:hover {
-  filter: brightness(85%);
-  transition: filter 0.2s ease-in-out;
+a.event-item:hover {
+  background-color: rgba(73, 232, 33, 0.5);
+  content: "JOIN";
+}
+
+.event-item-title {
+  font-weight: bold;
+  line-height: 125%;
+  text-align: center;
+  font-size: 20px;
+  width: 200px;
+  margin: auto;
+}
+
+.event-item-host {
+  height: 110px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  margin-right: 15px;
+  margin-left: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.event-item-day-name {
+  text-align: center;
+  padding: 0;
+  padding-top: 10px;
+}
+
+.event-item-date {
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.event-item-host-name {
+  text-align: center;
+}
+
+.host-info {
+  position: relative;
+  right: 0;
+  top: -15px;
+}
+
+.host-mini {
+  height: 75px;
+  width: 75px;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.75);
+}
+
+.spots-left {
+  position: relative;
+  margin: auto;
+  height: auto;
+  bottom: 0;
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 p {
-  padding: 10px;
+  padding: 7px;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 18px;
 }

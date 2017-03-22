@@ -92,8 +92,8 @@ class ResortsIndex extends React.Component {
         <aside className="resortsSidebar">
           <ul className="resorts-list">
             <h1
-              className={`resorts-header-${this.state.resortsDropdown}`}
-              onClick={this.handleClick}>Resorts</h1>
+              className={`resorts-header-${this.state.resortsDropdown}`}>
+              Resorts</h1>
             {this.renderResorts()}
           </ul>
         </aside>

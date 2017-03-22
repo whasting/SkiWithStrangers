@@ -19,10 +19,14 @@
 .landing-message {
   position: absolute;
   top: 15%;
-  width: 840px;
+  width: 100%;
   color: #E8E8E8;
   font-size: 64px;
   text-shadow: 2px 2px black;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .get-started {

@@ -20,12 +20,12 @@
 
 User.destroy_all
 
-u1 = User.create(username: "demo_user", name: "Demo User", password: "passwordpassword")
+u1 = User.create(username: "demo_user", name: "Demo User", password: "passwordpassword", photo_url: "http://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
 u2 = User.create(username: "wade", name: "Wade H", password: "password", is_host: true, photo_url: "https://res.cloudinary.com/whasting/image/upload/v1489776959/sailin_jkgbvd.jpg")
-u3 = User.create(username: "brittany", name: "Brittany K", password: "password", is_host: true)
-u4 = User.create(username: "max", name: "Max M", password: "password", is_host: true)
-u5 = User.create(username: "tom", name: "Tom D", password: "password", is_host: true)
-u6 = User.create(username: "matt", name: "Matt M", password: "password", is_host: true)
+u3 = User.create(username: "brittany", name: "Brittany K", password: "password", is_host: true, photo_url: "http://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
+u4 = User.create(username: "max", name: "Max M", password: "password", is_host: true, photo_url: "http://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
+u5 = User.create(username: "tom", name: "Tom D", password: "password", is_host: true, photo_url: "http://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
+u6 = User.create(username: "matt", name: "Matt M", password: "password", is_host: true, photo_url: "http://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
 
 #  id              :integer          not null, primary key
 #  name            :string           not null
@@ -98,7 +98,7 @@ r8 = Resort.create(
 
 Snowfall averages 450 inches, providing one of the longest ski and snowboard seasons in Lake Tahoe and establishing Squaw | Alpine as a top destination for spring skiing and boarding. Squaw | Alpine also boasts one of the region’s only mountain-top beginner areas and several intermediate skier havens, including Shirley Lake and the newly renamed Pacific Crest Bowls.",
   address: '1960 Squaw Valley Rd, Olympic Valley, CA 96146',
-  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_75,w_225/v1489776232/squawValley_aqxuwc.png')
+  resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_65,w_225/v1489776232/squawValley_aqxuwc.png')
 
 r9 = Resort.create(
   name: 'Sugar Bowl',
@@ -123,6 +123,7 @@ e1 = Event.create(
   title: "Shredding at Boreal",
   body: "We're a bunch of pros just loving life.",
   date: "3/3/2018",
+  capacity: 5,
   resort_id: r1.id,
   host_id: u2.id)
 
@@ -130,6 +131,7 @@ e2 = Event.create(
   title: "Noobs only!",
   body: "If you're not an absolute beginner, this event isn't for you",
   date: "1/2/2018",
+  capacity: 7,
   resort_id: r1.id,
   host_id: u3.id)
 
@@ -137,6 +139,7 @@ e3 = Event.create(
   title: "Hitting dat Heavenly powder at Heavenly",
   body: "Fun for the whole family, come on down!",
   date: "20/4/2017",
+  capacity: 4,
   resort_id: r2.id,
   host_id: u2.id)
 
@@ -144,6 +147,7 @@ e4 = Event.create(
   title: "Happy Fun Ski Time",
   body: "We're headed to Boreal on the 15th of February, come snowboard your valentine woes away!",
   date: "15/2/2018",
+  capacity: 5,
   resort_id: r1.id,
   host_id: u2.id)
 
@@ -151,6 +155,7 @@ e5 = Event.create(
   title: "Boreal Gnar Gnar Pow Pow",
   body: "There's like, 50 ft of powder this year bruh! Can you say backflips?",
   date: "5/3/2018",
+  capacity: 8,
   resort_id: r1.id,
   host_id: u4.id)
 
@@ -158,5 +163,10 @@ e6 = Event.create(
   title: "Beginning to intemediate Snowboarders",
   body: "Hi! We're from Sacramento and we want to desecrate the pristine powder that's forecasted to fall the day before our trip, come with us!",
   date: "1/4/2018",
+  capacity: 3,
   resort_id: r1.id,
   host_id: u5.id)
+
+Attendance.destroy_all
+
+a1 = Attendance.create(user_id: u2.id, event_id: e1.id)
