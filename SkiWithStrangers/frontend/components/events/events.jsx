@@ -1,6 +1,29 @@
 import React from 'react';
 import { hashHistory } from 'react-router';
 
+const customStyles = {
+  overlay: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    transition: 'background-color 0.75s'
+  },
+
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    transform: 'translate(-50%, -50%)',
+    padding: '2px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'none',
+    backgroundColor: 'transparent',
+    overflow: 'visible'
+  }
+};
+
 class Events extends React.Component {
   constructor(props) {
     super(props);
@@ -39,8 +62,18 @@ class Events extends React.Component {
 
   render() {
     return (
-      <div className="events-wrapper">
+      <div className="resort-events-detail">
+        <h1 className="event-header">
+          {this.renderResortName()}
+        </h1>
         {this.renderEvents()}
+        <Modal
+          isOpen={this.state.modalOpen}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Event Modal">
+          {this.state.renderEvent ? this.renderEvent() : null}
+        </Modal>
       </div>
     );
   }

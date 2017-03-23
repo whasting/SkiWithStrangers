@@ -18,6 +18,7 @@ export const receiveAttendance = () => dispatch => (
 export const createAttendance = attendance => dispatch => (
   APIUtil.createAttendance(attendance)
     .then(newAttendance => dispatch(fetchAttendance(newAttendance)))
+    .then(console.log)
 );
 
 export const updateAttendance = attendance => dispatch => (

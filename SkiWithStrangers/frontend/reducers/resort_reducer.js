@@ -1,5 +1,6 @@
 import { RECEIVE_RESORT,
-         DELETE_RESORT } from '../actions/resort_actions';
+         DELETE_RESORT,
+         RECEIVE_ATTENDANCE } from '../actions/resort_actions';
 import merge from 'lodash/merge';
 
 const ResortReducer = (state = {}, action) => {

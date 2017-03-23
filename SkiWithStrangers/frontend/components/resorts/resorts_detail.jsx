@@ -47,13 +47,7 @@ class ResortsDetail extends React.Component {
     super(props);
 
     this.state = {
-      modalOpen: false,
-      renderEvent: false,
-      name: "",
-      email: "",
-      username: this.props.currentUser.username,
-      userId: this.props.currentUser.id,
-      eventId: ""
+      modalOpen: false
     };
 
     this.openModal = this.openModal.bind(this);
@@ -62,8 +56,7 @@ class ResortsDetail extends React.Component {
     this.renderEvents = this.renderEvents.bind(this);
     this.renderResortName = this.renderResortName.bind(this);
     this.renderEvent = this.renderEvent.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderGuestList = this.renderGuestList.bind(this);
+    this.reRender = this.reRender.bind(this);
   }
 
   componentWillMount() {
@@ -92,12 +85,6 @@ class ResortsDetail extends React.Component {
   closeModal() {
     hashHistory.replace(`/resorts/${this.props.params.id[0]}`);
     this.setState({modalOpen: false, renderEvent: false});
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    console.log(e.target);
-    // this.props.createAttendance();
   }
 
   renderResort() {
@@ -179,19 +166,6 @@ class ResortsDetail extends React.Component {
     }
   }
 
-  renderGuestList(currentEvent) {
-    if (currentEvent.guests) {
-      let guestList = selectGuests(currentEvent);
-      return (
-        guestList.map((guest, idx) => (
-          <li key={idx} className="event-guest">
-            {guest.username}
-          </li>
-        ))
-      );
-    }
-  }
-
   renderEvent() {
     let resortId = this.props.params.id[1];
     let currentEvent = this.props.resort.events[resortId];
@@ -214,28 +188,16 @@ class ResortsDetail extends React.Component {
           </div>
         </div>
         <p className="spots-left-detail">{spotsLeft} Spots Left!</p>
-        <div className="guests-and-form">
-          <ul className="guest-list">
-            <h1 className="event-guests-title">Guests</h1>
-            {this.renderGuestList(currentEvent)}
-          </ul>
-          <form className="event-form" onSubmit={this.handleSubmit}>
-            <h1 className="event-join-title">Join Event</h1>
-            <input className="users-name" placeholder="Your Name"></input>
-            <input className="user-email" placeholder="Your Email"></input>
-            <input
-              className="user-phone"
-              placeholder="Your Phone Number (optional)">
-            </input>
-            <input type="hidden" value={this.props.currentUser.id}></input>
-            <input
-              type="hidden"
-              value={this.props.params.id[1]}></input>
-            <button className="event-button">Join Event!</button>
-          </form>
-        </div>
+        <AttendanceFormContainer
+          event={currentEvent}
+          reRender={this.reRender} />
       </div>
     );
+  }
+
+  reRender() {
+    this.closeModal();
+    this.setState(this.state);
   }
 
   render() {

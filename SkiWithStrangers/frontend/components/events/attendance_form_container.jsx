@@ -2,12 +2,14 @@ import { connect } from 'react-redux';
 import { createAttendance } from '../../actions/attendance_actions';
 import AttendanceForm from './attendance_form';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps);
+  return ({
   currentUser: state.session.currentUser,
-  currentEvent: state.resort.event
-});
+  currentEvent: ownProps.event
+});};
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   createAttendance: attendance => dispatch(createAttendance(attendance))
 });
 
