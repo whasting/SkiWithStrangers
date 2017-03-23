@@ -20,12 +20,12 @@
 
 User.destroy_all
 
-u1 = User.create(username: "demo_user", name: "Demo User", password: "passwordpassword", photo_url: "http://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
+u1 = User.create(username: "demo_user", name: "Demo User", password: "passwordpassword", photo_url: "https://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
 u2 = User.create(username: "wade", name: "Wade H", password: "password", is_host: true, photo_url: "https://res.cloudinary.com/whasting/image/upload/v1489776959/sailin_jkgbvd.jpg")
-u3 = User.create(username: "brittany", name: "Brittany K", password: "password", is_host: true, photo_url: "http://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
-u4 = User.create(username: "max", name: "Max M", password: "password", is_host: true, photo_url: "http://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
-u5 = User.create(username: "tom", name: "Tom D", password: "password", is_host: true, photo_url: "http://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
-u6 = User.create(username: "matt", name: "Matt M", password: "password", is_host: true, photo_url: "http://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
+u3 = User.create(username: "brittany", name: "Brittany K", password: "password", is_host: true, photo_url: "https://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
+u4 = User.create(username: "max", name: "Max M", password: "password", is_host: true, photo_url: "https://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
+u5 = User.create(username: "tom", name: "Tom D", password: "password", is_host: true, photo_url: "https://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
+u6 = User.create(username: "matt", name: "Matt M", password: "password", is_host: true, photo_url: "https://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png")
 
 #  id              :integer          not null, primary key
 #  name            :string           not null

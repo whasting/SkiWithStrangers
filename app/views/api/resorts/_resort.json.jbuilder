@@ -4,9 +4,9 @@ json.set! "events" do
     json.set! event.id do
       json.extract! event, :id, :title, :body, :date, :capacity, :resort_id
       json.set! "guests" do
-        event.attendances.each do |attendance|
-          json.set! attendance.id do
-            json.extract! attendance, :user_id, :event_id
+        event.users.each do |user|
+          json.set! user.id do
+            json.extract! user, :username, :name
           end
         end
       end

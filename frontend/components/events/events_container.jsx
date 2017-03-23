@@ -4,9 +4,11 @@ import Events from './events';
 import { receiveEvents, receiveEvent } from '../../actions/event_actions';
 import { selectEvents, selectEvent } from '../../reducers/selectors';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   events: selectEvents(state),
-  event: selectEvent(state)
+  event: selectEvent(state),
+  currentUser: state.session.currentUser,
+  resort: ownProps.resort
 });
 
 const mapDispatchToProps = (dispatch) => ({

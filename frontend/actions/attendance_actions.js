@@ -10,8 +10,33 @@ export const receiveAttendances = () => dispatch => (
     .then(attendances => dispatch(fetchAttendances(attendances)))
 );
 
+export const receiveAttendance = () => dispatch => (
+  APIUtil.receiveAttendance()
+    .then(attendance => dispatch(fetchAttendance(attendance)))
+);
+
+export const createAttendance = attendance => dispatch => (
+  APIUtil.createAttendance(attendance)
+    .then(newAttendance => dispatch(fetchAttendance(newAttendance)))
+);
+
+export const updateAttendance = attendance => dispatch => (
+  APIUtil.updateAttendance(attendance)
+    .then(updatedAttendance => dispatch(fetchAttendance(updatedAttendance)))
+);
+
+export const deleteAttendance = id => dispatch => (
+  APIUtil.deleteAttendance(id)
+    .then(attendance => dispatch(fetchAttendance(attendance)))
+);
+
 //sync
 const fetchAttendances = attendances => ({
   type: RECEIVE_ATTENDANCES,
   attendances
+});
+
+const fetchAttendance = attendance => ({
+  type: RECEIVE_ATTENDANCE,
+  attendance
 });

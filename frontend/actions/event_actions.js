@@ -3,6 +3,7 @@ import * as APIUtil from '../util/event_api_util';
 export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
 export const RECEIVE_EVENT = 'RECEIVE_EVENT';
 export const DELETE_EVENT = 'DELETE_EVENT';
+export const CLEAR_EVENT = 'CLEAR_EVENT';
 
 //thunk
 
@@ -33,12 +34,17 @@ export const deleteEvent = id => dispatch => (
 
 //sync
 
-const fetchEvents = events => ({
+export const fetchEvents = events => ({
   type: RECEIVE_EVENTS,
   events
 });
 
-const fetchEvent = event => ({
+export const fetchEvent = event => ({
   type: RECEIVE_EVENT,
+  event
+});
+
+export const clearEvent = event => ({
+  type: CLEAR_EVENT,
   event
 });

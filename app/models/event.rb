@@ -20,4 +20,6 @@ class Event < ApplicationRecord
     foreign_key: :host_id
 
   has_many :attendances
+  has_many :users,
+    through: :attendances
 end

@@ -5,9 +5,14 @@ import { selectResort } from '../../reducers/selectors';
 import { receiveResort } from '../../actions/resort_actions';
 import { receiveEvent } from '../../actions/event_actions';
 
-const mapStateToProps = state => ({
-  resort: selectResort(state)
-});
+import values from 'lodash/values';
+
+const mapStateToProps = state => {
+  
+  return ({
+  resort: selectResort(state),
+  currentUser: state.session.currentUser
+});};
 
 const mapDispatchToProps = dispatch => ({
   receiveResort: id => dispatch(receiveResort(id)),

@@ -46,6 +46,6 @@ class Api::AttendancesController < ApplicationController
   private
 
   def attendance_params
-    params.require(:attendance).permite(:user_id, :event_id)
+    params.require(:attendance).permit(:user_id, :event_id)
   end
 end

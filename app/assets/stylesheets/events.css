@@ -49,6 +49,7 @@
 
 .event-host-name {
   text-align: center;
+  padding: 5px;
 }
 
 .detail-host-info {
@@ -81,6 +82,54 @@
   align-items: flex-end;
   justify-content: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.guests-and-form {
+  margin: 8px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-guests-title {
+  font-size: 20px;
+}
+
+.guest-list {
+  width: 50%;
+  padding: 10px;
+}
+
+.event-guest {
+  padding: 5px 0 5px 5px;
+}
+
+.event-form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.users-name, .user-email, .user-phone {
+  padding: 5px 0 5px 5px;
+  margin: 8px 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.event-button {
+  text-align: center;
+  padding: 8px 15px;
+  margin-top: 5px;
+  background-color: #098A52;
+  color: #FFFFFF;
+  box-shadow: 2px 2px 5px black;
+}
+
+.event-button:hover {
+  cursor: pointer;
+  filter: brightness(90%);
 }
 
 p {
