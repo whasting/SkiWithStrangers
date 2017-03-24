@@ -7,13 +7,11 @@ const AttendanceReducer = (state = {}, action) => {
   let newState;
   switch(action.type){
     case RECEIVE_ATTENDANCE:
-      newState = merge({}, state);
-      newState[action.attendance.id] = action.attendance;
-      return newState;
+      return merge({}, action.attendance);
     case DELETE_ATTENDANCE:
       newState = merge({}, state);
       delete newState[action.attendance.id];
-      return newState;
+      return {};
     default:
       return state;
   }

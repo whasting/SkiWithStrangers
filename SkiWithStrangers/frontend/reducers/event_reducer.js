@@ -1,5 +1,6 @@
 import { RECEIVE_EVENT,
-         DELETE_EVENT } from '../actions/event_actions';
+         DELETE_EVENT,
+         CLEAR_EVENT} from '../actions/event_actions';
 import merge from 'lodash/merge';
 
 const EventReducer = (state = {}, action) => {
@@ -7,11 +8,14 @@ const EventReducer = (state = {}, action) => {
   let newState;
   switch(action.type) {
     case RECEIVE_EVENT:
-      return action.event;
+      newState = merge({}, state, action.event);
+      return newState;
     case DELETE_EVENT:
       newState = merge({}, state);
       delete newState[action.event.id];
       return newState;
+    case CLEAR_EVENT:
+      return action.event;
     default:
       return state;
   }

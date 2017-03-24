@@ -5,7 +5,7 @@ const AttendancesReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_ATTENDANCES:
-      return merge({}, state, action.attendances);
+      return merge({}, action.attendances);
     default:
       return state;
   }

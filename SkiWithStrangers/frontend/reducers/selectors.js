@@ -10,7 +10,7 @@ export const selectResort = ({ resort }) => {
 };
 
 export const selectEvent = ({ event }) => {
-  return values(event)[0];
+  return values(event);
 };
 
 export const selectEvents = ({ events }) => {
@@ -19,4 +19,8 @@ export const selectEvents = ({ events }) => {
 
 export const selectGuests = ({ guests }) => {
   return values(guests);
+};
+
+export const selectAttendances = ({ attendances }) => {
+  return values(attendances);
 };

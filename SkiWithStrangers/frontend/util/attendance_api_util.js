@@ -20,6 +20,13 @@ export const createAttendance = attendance => (
   })
 );
 
+export const receiveGuest = id => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/users/${id}`
+  })
+);
+
 export const updateAttendance = attendance => (
   $.ajax({
     method: 'PATCH',

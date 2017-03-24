@@ -10,15 +10,14 @@ export const receiveAttendances = () => dispatch => (
     .then(attendances => dispatch(fetchAttendances(attendances)))
 );
 
-export const receiveAttendance = () => dispatch => (
-  APIUtil.receiveAttendance()
+export const receiveAttendance = id => dispatch => (
+  APIUtil.receiveAttendance(id)
     .then(attendance => dispatch(fetchAttendance(attendance)))
 );
 
 export const createAttendance = attendance => dispatch => (
   APIUtil.createAttendance(attendance)
     .then(newAttendance => dispatch(fetchAttendance(newAttendance)))
-    .then(console.log)
 );
 
 export const updateAttendance = attendance => dispatch => (
@@ -28,7 +27,7 @@ export const updateAttendance = attendance => dispatch => (
 
 export const deleteAttendance = id => dispatch => (
   APIUtil.deleteAttendance(id)
-    .then(attendance => dispatch(fetchAttendance(attendance)))
+    .then(attendance => dispatch(removeAttendance(attendance)))
 );
 
 //sync
@@ -39,5 +38,10 @@ const fetchAttendances = attendances => ({
 
 const fetchAttendance = attendance => ({
   type: RECEIVE_ATTENDANCE,
+  attendance
+});
+
+const removeAttendance = attendance => ({
+  type: DELETE_ATTENDANCE,
   attendance
 });
