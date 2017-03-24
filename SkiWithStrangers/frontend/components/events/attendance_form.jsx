@@ -23,10 +23,6 @@ class AttendanceForm extends React.Component {
     this.renderJoinedMessage = this.renderJoinedMessage.bind(this);
   }
 
-  componentWillMount() {
-    this.props.receiveAttendances();
-  }
-
   componentWillReceiveProps(newProps) {
     if (this.props.attendance !== newProps.attendance) {
       this.props.receiveAttendances();

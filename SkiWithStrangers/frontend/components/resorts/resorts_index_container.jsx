@@ -7,7 +7,7 @@ import { selectAllResorts, selectResort } from '../../reducers/selectors';
 const mapStateToProps = (state) => {
   return ({
   currentUser: state.session.currentUser,
-  resorts: selectAllResorts(state),
+  resorts: state.resorts,
   resort: selectResort(state)
 });};
 
