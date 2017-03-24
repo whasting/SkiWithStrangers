@@ -5,7 +5,6 @@ import moment from 'moment';
 import Modal from 'react-modal';
 import EventDetailContainer from './event_detail_container';
 
-
 const customStyles = {
   overlay: {
     height: '100%',
@@ -83,7 +82,9 @@ class Events extends React.Component {
   renderEvents() {
     let resortEvents;
     if (this.props.resort && this.props.events) {
-      resortEvents = this.props.events;
+
+      resortEvents = selectEvents(this.props);
+
       resortEvents = resortEvents.map((event, idx) => {
         let date = event.date.slice(0, 10);
         let dayName = moment(date).format("dddd");
@@ -124,7 +125,13 @@ class Events extends React.Component {
           </Link>
         );}
       });
-    } else {
+    }
+
+    if (resortEvents) {
+      resortEvents = resortEvents.filter((event) => event);
+    }
+
+    if (resortEvents && resortEvents.length === 0) {
       resortEvents = (
         <div className="event-item">
           <p>No upcoming events :(</p>
@@ -139,6 +146,15 @@ class Events extends React.Component {
   }
 
   render() {
+
+    let passEvent;
+    if (Array.isArray(this.props.params.id)) {
+      passEvent = this.props.events[this.props.params.id[1]];
+    } else {
+      passEvent = "";
+    }
+
+
     return (
       <div className="resort-events-detail">
         <h1 className="event-header">
@@ -151,7 +167,7 @@ class Events extends React.Component {
           style={customStyles}
           contentLabel="Event Modal">
           <EventDetailContainer
-            event={this.props.event}
+            event={passEvent}
             resort={this.props.resort} />
         </Modal>
       </div>

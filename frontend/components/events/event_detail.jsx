@@ -15,8 +15,6 @@ class EventDetail extends React.Component {
     };
 
     this.renderEvent = this.renderEvent.bind(this);
-    this.renderGuestList = this.renderGuestList.bind(this);
-    this.fetchNewGuests = this.fetchNewGuests.bind(this);
   }
 
   componentWillMount() {
@@ -43,6 +41,7 @@ class EventDetail extends React.Component {
   }
 
   renderEvent(currentEvent) {
+
     let date = currentEvent.date.slice(0, 10);
     let dayName = moment(date).format("dddd");
     let newDate = moment(date).format("MMMM Do YYYY");
@@ -82,31 +81,10 @@ class EventDetail extends React.Component {
     );
   }
 
-  renderGuestList(currentEvent) {
-    if (currentEvent && currentEvent.guests) {
-      let guestList = selectGuests(currentEvent);
-      return (
-        guestList.map((guest, idx) => (
-          <li key={idx} className="event-guest">
-            {guest.username}
-          </li>
-        ))
-      );
-    }
-  }
-
-  fetchNewGuests() {
-    this.props.receiveEvent(this.state.event[0].id);
-  }
-
   render() {
-    if (this.props.event.length > 0) {
     return (
-      this.renderEvent(this.props.event[0])
+      this.renderEvent(this.props.event)
     );
-  } else {
-    return (<div></div>);
-  }
   }
 }
 

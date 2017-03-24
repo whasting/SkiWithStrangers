@@ -3,6 +3,7 @@ import { Link, hashHistory, withRouter } from 'react-router';
 import moment from 'moment';
 import Modal from 'react-modal';
 import EventDetailContainer from '../events/event_detail_container';
+import { selectEvents } from '../../reducers/selectors';
 
 const customStyles = {
   overlay: {
@@ -54,8 +55,8 @@ class Dashboard extends React.Component {
       hashHistory.replace('/');
     }
 
-    if (this.props.attendances !== newProps.attendances) {
-      
+    if (this.props.attendances.length !== newProps.attendances.length) {
+      this.props = newProps;
     }
   }
 
@@ -70,18 +71,29 @@ class Dashboard extends React.Component {
 
   renderEvents() {
     let eventList = [];
-    let newEvents = this.props.events;
+    let newEvents = selectEvents(this.props);
     let currentUserId = this.props.currentUser.id;
+    let keepEvent;
 
-    newEvents = newEvents.filter((userEvent) => {
-      return (
+    newEvents.forEach((userEvent) => {
+      keepEvent = false;
+      this.props.attendances.forEach(attendance => {
+        if (attendance.event_id === userEvent.id &&
+            attendance.user_id === currentUserId) {
+          keepEvent = true;
+        }
+      });
+      if (
+        keepEvent &&
         userEvent.guests &&
         Object.keys(userEvent.guests).includes(currentUserId.toString())
-      );
+      ) {
+        eventList.push(userEvent);
+      }
     });
-
+    
     if (this.props.events) {
-      eventList = newEvents.map((userEvent, idx) => {
+      eventList = eventList.map((userEvent, idx) => {
         let date = userEvent.date.slice(0, 10);
         let dayName = moment(date).format("dddd");
         let newDate = moment(date).format("MMM Do YYYY");
@@ -96,11 +108,6 @@ class Dashboard extends React.Component {
 
         let spotsLeft = userEvent.capacity - numGuests;
         let waitList = spotsLeft ? "" : "-waitlist";
-
-        //link route to just /event/:id X
-        //figure out if waitlisted X
-        //need to setup modal
-        //calculate spots left X
 
         return (
           <Link
@@ -129,6 +136,13 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    let passEvent;
+    if (this.props.params.id) {
+      passEvent = this.props.events[this.props.params.id];
+    } else {
+      passEvent = "";
+    }
+
     if (this.props.currentUser) {
       return (
         <div className="dashboard-container">
@@ -143,7 +157,7 @@ class Dashboard extends React.Component {
               style={customStyles}
               contentLabel="Event Modal">
               <EventDetailContainer
-                event={this.props.event}
+                event={passEvent}
                 resort={this.props.resort} />
             </Modal>
             <Link

@@ -5,13 +5,14 @@ import { receiveEvents, receiveEvent } from '../../actions/event_actions';
 import { receiveAttendances } from '../../actions/attendance_actions';
 import { selectEvents, selectEvent, selectAttendances } from '../../reducers/selectors';
 
-const mapStateToProps = (state, ownProps) => ({
-  events: selectEvents(state),
+const mapStateToProps = (state, ownProps) => {
+  return ({
+  events: state.events,
   event: selectEvent(state),
   attendances:  selectAttendances(state),
   currentUser: state.session.currentUser,
   resort: ownProps.resort
-});
+});};
 
 const mapDispatchToProps = (dispatch) => ({
   receiveEvents: () => dispatch(receiveEvents()),

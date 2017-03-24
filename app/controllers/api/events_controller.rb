@@ -1,10 +1,10 @@
 class Api::EventsController < ApplicationController
   def index
-    @events = Event.all
+    @events = Event.all.includes(:users)
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = Event.new(event_params).includes(:users)
     if @event.save
       render 'api/events/show'
     else

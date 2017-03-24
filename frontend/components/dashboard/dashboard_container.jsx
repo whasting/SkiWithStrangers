@@ -7,8 +7,8 @@ import { selectEvents, selectAttendances } from '../../reducers/selectors';
 const mapStateToProps = (state) => {
 
   return ({
-    events: selectEvents(state),
     currentUser: state.session.currentUser,
+    events: state.events,
     attendances: selectAttendances(state)
   });
 };

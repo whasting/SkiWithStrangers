@@ -5,15 +5,9 @@ import { receiveAttendances } from '../../actions/attendance_actions';
 import { selectEvent } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
-  let passEvent;
-  if (ownProps.event) {
-    passEvent = ownProps.event;
-  } else {
-    passEvent = selectEvent(state);
-  }
 
   return ({
-  event: passEvent,
+  event: ownProps.event,
   resort: ownProps.resort,
   attendances: state.attendances
 });};

@@ -12,22 +12,6 @@ class ResortsDetail extends React.Component {
     this.renderResort = this.renderResort.bind(this);
   }
 
-  componentWillMount() {
-
-  }
-
-  componentDidMount() {
-    this.props.receiveResort(this.props.params.id);
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (typeof newProps.params.id === 'string' &&
-               newProps.params.id !== this.props.params.id) {
-
-      this.props.receiveResort(newProps.params.id);
-    }
-  }
-
   renderResort() {
     if (this.props.resort) {
       return (

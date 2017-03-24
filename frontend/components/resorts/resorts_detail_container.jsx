@@ -7,10 +7,9 @@ import { receiveEvent } from '../../actions/event_actions';
 
 import values from 'lodash/values';
 
-const mapStateToProps = state => {
-  
+const mapStateToProps = (state, ownProps) => {
   return ({
-  resort: selectResort(state),
+  resort: ownProps.resort,
   currentUser: state.session.currentUser
 });};
 
