@@ -17,6 +17,10 @@ class ResortsIndex extends React.Component {
     this.props.receiveResorts();
   }
 
+  componentWillMount() {
+    hashHistory.replace('/resorts/1');
+  }
+
   componentWillReceiveProps(newProps) {
     if (!newProps.currentUser) {
       hashHistory.replace('/');

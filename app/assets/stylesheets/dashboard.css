@@ -1,0 +1,54 @@
+.dashboard-container {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(110, 158, 212, .7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.dashboard-events-detail {
+  position: absolute;
+  top: 5%;
+  width: 85%;
+  min-width: auto;
+  height: auto;
+  padding: 15px;
+  margin: auto;
+  font-size: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.90);
+  display: flex;
+
+  flex-wrap: wrap;
+}
+
+.dashboard-events-title {
+  width: 100%;
+  font-size: 24px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.event-item-join {
+  border: 1px dashed rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin: 10px;
+  color: rgba(0, 0, 0, 0.75);
+  height: 225px;
+  width: 225px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34px;
+}
+
+.event-item-join:hover {
+  background-color: rgba(73, 232, 33, 0.5);
+}
+
+h1.event-item-title {
+  font-size: 34px;
+}

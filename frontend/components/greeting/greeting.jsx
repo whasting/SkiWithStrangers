@@ -28,6 +28,15 @@ class Greeting extends React.Component {
   }
 
   personalGreeting() {
+    let pathName = this.props.location.pathname;
+    let dashboardClass = "nav-button-logged-in";
+    let resAndEvClass = "nav-button-logged-in";
+
+    if (pathName.slice(0, 8) === "/resorts") {
+      resAndEvClass = "nav-button-logged-in active";
+    } else {
+      dashboardClass = "nav-button-logged-in active";
+    }
 
     return (
       <nav className="navbar">
@@ -45,11 +54,11 @@ class Greeting extends React.Component {
           <Link
             to="/dashboard"
             activeClassName="current"
-            className="nav-button-logged-in">Dashboard</Link>
+            className={`${dashboardClass}`}>Dashboard</Link>
           <Link
             to="/resorts"
             activeClassName="current"
-            className="nav-button-logged-in">Resorts and Events</Link>
+            className={`${resAndEvClass}`}>Resorts and Events</Link>
           <Link
             onClick={this.handleLogout}
             className="nav-button-logged-in">Log Out</Link>

@@ -74,13 +74,14 @@ class AttendanceForm extends React.Component {
       }
     });
 
+    this.props.receiveAttendances();
     this.props.receiveEvent(this.state.event_id);
   }
 
   renderForm() {
     let currentUserAttending = this.props.guestJoin;
     let currentUserWaitlisted = false;
-    
+
     this.props.guests.forEach(guest => {
       if (currentUserAttending) {
         currentUserWaitlisted = guest.waitlist;
