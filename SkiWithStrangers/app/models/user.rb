@@ -28,6 +28,7 @@ class User < ApplicationRecord
 
   def default_values
     self.is_host ||= false
+    self.photo_url ||= "https://res.cloudinary.com/whasting/image/upload/v1490151166/default-user-image_iwf9rw.png"
   end
 
   def self.find_by_credentials(username, password)
