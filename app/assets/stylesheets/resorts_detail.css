@@ -129,7 +129,20 @@
 
 a.event-item:hover {
   background-color: rgba(73, 232, 33, 0.5);
-  content: "JOIN";
+}
+
+.event-item-waitlist {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin: 10px;
+  color: rgba(0, 0, 0, 0.75);
+  height: 225px;
+  width: 225px;
+  transition: filter 0.2s ease-in-out;
+}
+
+a.event-item-waitlist:hover {
+  background-color: rgba(255, 174, 44, 0.75);
 }
 
 .event-item-title {

@@ -28,7 +28,7 @@ class Greeting extends React.Component {
   }
 
   personalGreeting() {
-    
+
     return (
       <nav className="navbar">
         <div className="logo">
@@ -50,10 +50,6 @@ class Greeting extends React.Component {
             to="/resorts"
             activeClassName="current"
             className="nav-button-logged-in">Resorts and Events</Link>
-          <Link
-            to="/hosts"
-            activeClassName="current"
-            className="nav-button-logged-in">Hosts</Link>
           <Link
             onClick={this.handleLogout}
             className="nav-button-logged-in">Log Out</Link>

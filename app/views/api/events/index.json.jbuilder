@@ -4,7 +4,12 @@
     json.set! "guests" do
       event.users.each do |user|
         json.set! user.id do
-          json.extract! user, :username, :name
+          json.extract! user, :id, :username, :name
+          user.attendances.each do |attendance|
+            if attendance.event_id == event.id
+              json.extract! attendance, :waitlist
+            end
+          end
         end
       end
     end

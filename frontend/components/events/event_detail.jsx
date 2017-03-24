@@ -10,7 +10,8 @@ class EventDetail extends React.Component {
     super(props);
 
     this.state = {
-      event: this.props.event
+      event: this.props.event,
+      attendances: this.props.attendances
     };
 
     this.renderEvent = this.renderEvent.bind(this);
@@ -26,6 +27,11 @@ class EventDetail extends React.Component {
     if (this.props.event !== newProps.event) {
       this.setState({event: newProps.event});
     }
+
+    if(this.state.attendances !== newProps.attendances) {
+      this.setState({attendances: newProps.attendances});
+      this.props = newProps;
+    }
   }
 
   componentWillUnmount() {
@@ -38,7 +44,17 @@ class EventDetail extends React.Component {
     let date = currentEvent.date.slice(0, 10);
     let dayName = moment(date).format("dddd");
     let newDate = moment(date).format("MMMM Do YYYY");
-    let numGuests = currentEvent.guests ? Object.keys(currentEvent.guests).length : 0;
+    let numGuests = 0;
+
+    if (this.state.attendances) {
+      for (let attendanceId in this.state.attendances) {
+        if(currentEvent.id === this.state.attendances[attendanceId].event_id &&
+           this.state.attendances[attendanceId].waitlist === false) {
+          numGuests = numGuests + 1;
+        }
+      }
+    }
+
     let spotsLeft = currentEvent.capacity - numGuests;
 
     return (

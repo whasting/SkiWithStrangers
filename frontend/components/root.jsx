@@ -7,6 +7,7 @@ import ResortsIndexContainer from './resorts/resorts_index_container';
 import ResortsDetailContainer from './resorts/resorts_detail_container';
 import SessionFormContainer from './session_form/session_form_container';
 import EventsContainer from './events/events_container';
+import DashboardContainer from './dashboard/dashboard_container';
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
@@ -45,6 +46,9 @@ const Root = ({ store }) => {
                 component={ EventsContainer } />
             </ Route>
           </ Route>
+          <Route
+            path='/dashboard'
+            component={ DashboardContainer } />
         </ Route>
       </Router>
     </Provider>

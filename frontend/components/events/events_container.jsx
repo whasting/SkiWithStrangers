@@ -2,18 +2,21 @@ import { connect } from 'react-redux';
 import Events from './events';
 
 import { receiveEvents, receiveEvent } from '../../actions/event_actions';
-import { selectEvents, selectEvent } from '../../reducers/selectors';
+import { receiveAttendances } from '../../actions/attendance_actions';
+import { selectEvents, selectEvent, selectAttendances } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => ({
   events: selectEvents(state),
   event: selectEvent(state),
+  attendances:  selectAttendances(state),
   currentUser: state.session.currentUser,
   resort: ownProps.resort
 });
 
 const mapDispatchToProps = (dispatch) => ({
   receiveEvents: () => dispatch(receiveEvents()),
-  receiveEvent: id => dispatch(receiveEvent(id))
+  receiveEvent: id => dispatch(receiveEvent(id)),
+  receiveAttendances: () => dispatch(receiveAttendances())
 });
 
 export default connect(

@@ -20,3 +20,7 @@ export const selectEvents = ({ events }) => {
 export const selectGuests = ({ guests }) => {
   return values(guests);
 };
+
+export const selectAttendances = ({ attendances }) => {
+  return values(attendances);
+};

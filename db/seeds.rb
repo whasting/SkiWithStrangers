@@ -169,4 +169,4 @@ e6 = Event.create(
 
 Attendance.destroy_all
 
-a1 = Attendance.create(user_id: u2.id, event_id: e1.id)
+a1 = Attendance.create(user_id: u2.id, event_id: e1.id, waitlist: false)

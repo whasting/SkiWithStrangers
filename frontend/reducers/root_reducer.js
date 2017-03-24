@@ -4,7 +4,7 @@ import ResortsReducer from './resorts_reducer';
 import ResortReducer from './resort_reducer';
 import EventsReducer from './events_reducer';
 import EventReducer from './event_reducer';
-import AttendancesReducer from './attendance_reducer';
+import AttendancesReducer from './attendances_reducer';
 import AttendanceReducer from './attendance_reducer';
 
 const RootReducer = combineReducers({
