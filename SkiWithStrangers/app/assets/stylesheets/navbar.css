@@ -76,6 +76,13 @@
   cursor: pointer;
 }
 
+.nav-button-logged-in.active {
+  padding: 27.5px;
+  color: #E8E8E8;
+  background-color: #39427a;
+  cursor: default;
+}
+
 .nav-button-logged-in:hover, .nav-button-logged-out:hover {
   background-color: #39427a;
   opacity: 1;

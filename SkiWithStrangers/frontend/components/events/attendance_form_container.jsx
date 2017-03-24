@@ -3,7 +3,7 @@ import { createAttendance,
          receiveAttendances,
          deleteAttendance } from '../../actions/attendance_actions';
 import AttendanceForm from './attendance_form';
-import { receiveEvent } from '../../actions/event_actions';
+import { receiveEvent, receiveEvents } from '../../actions/event_actions';
 import { selectEvent } from '../../reducers/selectors';
 import values from 'lodash/values';
 
@@ -33,7 +33,8 @@ const mapDispatchToProps = (dispatch) => ({
   createAttendance: attendance => dispatch(createAttendance(attendance)),
   receiveAttendances: () => dispatch(receiveAttendances()),
   receiveEvent: id => dispatch(receiveEvent(id)),
-  deleteAttendance: id => dispatch(deleteAttendance(id))
+  deleteAttendance: id => dispatch(deleteAttendance(id)),
+  receiveEvents: () => dispatch(receiveEvents())
 });
 
 export default connect(

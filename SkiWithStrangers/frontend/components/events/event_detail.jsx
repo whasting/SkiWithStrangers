@@ -20,7 +20,11 @@ class EventDetail extends React.Component {
   }
 
   componentWillMount() {
-    this.props.receiveEvent(this.props.params.id[1]);
+    if (Array.isArray(this.props.params.id)) {
+      this.props.receiveEvent(this.props.params.id[1]);
+    } else {
+      this.props.receiveEvent(this.props.params.id);
+    }
   }
 
   componentWillReceiveProps(newProps) {
@@ -39,8 +43,6 @@ class EventDetail extends React.Component {
   }
 
   renderEvent(currentEvent) {
-    let resortId;
-
     let date = currentEvent.date.slice(0, 10);
     let dayName = moment(date).format("dddd");
     let newDate = moment(date).format("MMMM Do YYYY");

@@ -7,6 +7,7 @@ import ResortsIndexContainer from './resorts/resorts_index_container';
 import ResortsDetailContainer from './resorts/resorts_detail_container';
 import SessionFormContainer from './session_form/session_form_container';
 import EventsContainer from './events/events_container';
+import EventDetailContainer from './events/events_container';
 import DashboardContainer from './dashboard/dashboard_container';
 
 const Root = ({ store }) => {
@@ -48,7 +49,11 @@ const Root = ({ store }) => {
           </ Route>
           <Route
             path='/dashboard'
-            component={ DashboardContainer } />
+            component={ DashboardContainer } >
+            <Route
+              path='/dashboard/event/:id'
+              component={ EventDetailContainer } />
+          </ Route>
         </ Route>
       </Router>
     </Provider>
