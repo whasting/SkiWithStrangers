@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 import HostForm from './host_form';
+import { createEvent } from '../../actions/event_actions';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return ({
-    events: state.events
+    resort: ownProps.resort
   });
 };
 
 const mapDispatchToProps = dispatch => ({
-
+  createEvent: event => dispatch(createEvent(event))
 });
 
 export default connect(

@@ -1,0 +1,35 @@
+.create-event-container {
+  height: 350px;
+  width: 450px;
+  background-color: white;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.host-form {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.event-join-title {
+  font-size: 36px;
+  color: rgba(0, 0, 0, 0.75);
+  padding-bottom: 15px;
+}
+
+.host-form input {
+  width: 60%;
+  padding: 5px 0 5px 5px;
+  margin: 8px 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.host-form .description {
+  width: 60%;
+  padding: 5px 0 5px 5px;
+  margin: 8px 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}

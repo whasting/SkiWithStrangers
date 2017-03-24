@@ -90,11 +90,6 @@ class AttendanceForm extends React.Component {
 
       let numGuests = 0;
       if (this.props.event.guests) {
-        // for (let guestId in this.props.event.guests) {
-        //   if (this.props.event.guests[guestId].waitlist === false) {
-        //     numGuests = numGuests + 1;
-        //   }
-        // }
         for (let attendanceId in this.props.attendances) {
           if (this.props.attendances[attendanceId].user_id === this.state.user_id &&
               this.props.attendances[attendanceId].event_id === this.state.event_id &&

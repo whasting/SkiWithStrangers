@@ -9,6 +9,7 @@ import SessionFormContainer from './session_form/session_form_container';
 import EventsContainer from './events/events_container';
 import EventDetailContainer from './events/events_container';
 import DashboardContainer from './dashboard/dashboard_container';
+import HostFormContainer from './host_form/host_form_container';
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
@@ -45,6 +46,9 @@ const Root = ({ store }) => {
               <Route
                 path='/resorts/:id/event/:id'
                 component={ EventsContainer } />
+              <Route
+                path='/resorts/:id/create-event'
+                component={ HostFormContainer } />
             </ Route>
           </ Route>
           <Route
