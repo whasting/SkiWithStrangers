@@ -56,6 +56,8 @@ in the back end which contains `id`, `user_id`, and `event_id`.
 
 ![image of event detail and join form](screenshots/join-event.png)
 
+## Work to be Done in the Future
+
 ### Event Creation and Editing
 
-## Work to be Done in the Future
+Create `HostForm` and allow approved users to create events.
