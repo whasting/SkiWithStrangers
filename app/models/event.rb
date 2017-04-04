@@ -23,4 +23,13 @@ class Event < ApplicationRecord
   has_many :attendances
   has_many :users,
     through: :attendances
+
+  def self.filter(attributes = {})
+    resort_id = attributes[:resort_id].to_i
+    if (attributes.empty? || resort_id == -1)
+      return Event.all
+    else
+      return Event.where(resort_id: resort_id)
+    end
+  end
 end

@@ -1,6 +1,6 @@
 @events.each do |event|
   json.set! event.id do
-    json.extract! event, :id, :title, :body, :date, :resort_id, :capacity
+    json.extract! event, :id, :title, :body, :date, :resort_id, :capacity, :host_id
     json.set! "guests" do
       event.users.each do |user|
         json.set! user.id do

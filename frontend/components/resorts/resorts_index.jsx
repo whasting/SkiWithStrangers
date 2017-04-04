@@ -112,6 +112,7 @@ class ResortsIndex extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="resorts-events">
         <aside className="resortsSidebar">
