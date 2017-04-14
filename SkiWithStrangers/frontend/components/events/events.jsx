@@ -49,18 +49,31 @@ class Events extends React.Component {
 
   componentWillMount() {
     Modal.setAppElement(document.getElementById('root'));
-    this.props.receiveEvents();
-    this.props.receiveAttendances();
+
     if (!this.state.eventModalOpen && Array.isArray(this.props.params.id)) {
       hashHistory.replace(`/resorts/${this.props.params.id[0]}`);
     }
   }
 
+  componentDidMount() {
+    this.props.receiveEvents(this.props.resortId);
+    this.props.receiveAttendances();
+  }
+
+  componentWillUnmount() {
+    this.props.clearEvents(null);
+  }
+
   componentWillReceiveProps(newProps) {
+    if (this.props.resortId !== newProps.resortId) {
+      this.props.clearEvents(null);
+      this.props.receiveEvents(newProps.resortId);
+    }
     if (this.props.attendances !== newProps.attendances) {
       this.props = newProps;
       this.setState({attendances: this.props.attendances});
     }
+
   }
 
   openEventModal() {
@@ -77,10 +90,10 @@ class Events extends React.Component {
   }
 
   renderResortName() {
-    if (this.props.resort) {
+    if (this.props.resortId) {
       return (
         <div className="events-header">
-          Events at {this.props.resort.name}
+          Events at {this.props.resortName}
         </div>
       );
     }
@@ -88,8 +101,7 @@ class Events extends React.Component {
 
   renderEvents() {
     let resortEvents;
-    if (this.props.resort && this.props.events) {
-
+    if (this.props.events) {
       resortEvents = selectEvents(this.props);
 
       resortEvents = resortEvents.map((event, idx) => {
@@ -98,22 +110,18 @@ class Events extends React.Component {
         let newDate = moment(date).format("MMM Do YYYY");
         let numGuests = 0;
 
-        if (this.state.attendances) {
-          for (let attendanceId in this.state.attendances) {
-            if(event.id === this.state.attendances[attendanceId].event_id &&
-               this.state.attendances[attendanceId].waitlist === false) {
-              numGuests = numGuests + 1;
-            }
-          }
-        }
+        numGuests =
+          event.guests.filter(guest => guest.waitlist === false).length;
+
+        console.log(numGuests);
 
         let spotsLeft = event.capacity - numGuests;
         let waitList = spotsLeft ? "" : "-waitlist";
 
-        if (this.props.resort.id === event.resort_id) {
+        if (this.props.resortId === event.resort_id) {
           return (
           <Link
-            to={`/resorts/${this.props.resort.id}/event/${event.id}`}
+            to={`/resorts/${this.props.resortId}/event/${event.id}`}
             key={idx}
             className={`event-item${waitList} ${event.id}`}
             onClick={this.openEventModal}>
@@ -134,17 +142,16 @@ class Events extends React.Component {
       });
     }
 
-    if (resortEvents) {
-      resortEvents = resortEvents.filter((event) => event);
-    }
+    resortEvents.push(
+      <Link
+        to={`resorts/${this.props.resortId}/create-event`}
+        key="create-event"
+        onClick={this.openCreateModal}
+        className='event-item-join'>
+        <h1 className="event-item-title">Create Event</h1>
+      </Link>
+    );
 
-    if (resortEvents && resortEvents.length === 0) {
-      resortEvents = (
-        <div className="event-item">
-          <p>No upcoming events :(</p>
-        </div>
-      );
-    }
     return (
       <div className="resort-events">
         {resortEvents}
@@ -153,7 +160,6 @@ class Events extends React.Component {
   }
 
   render() {
-
     let passEvent;
     if (Array.isArray(this.props.params.id)) {
       passEvent = this.props.events[this.props.params.id[1]];
@@ -161,44 +167,34 @@ class Events extends React.Component {
       passEvent = "";
     }
 
-    let eventButton = "";
-    if (this.props.resort) {
-      eventButton = (
-        <Link
-          to={`resorts/${this.props.resort.id}/create-event`}
-          onClick={this.openCreateModal}
-          className="create-event-button">
-          <h1>Create Event</h1>
-        </Link>
-      );
-    }
-
 
     return (
       <div className="resort-events-detail">
-        <h1 className="event-header">
-          {this.renderResortName()}
-        </h1>
-        {eventButton}
-        <Modal
-          isOpen={this.state.createModalOpen}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-          contentLabel="Event Modal">
-          <HostFormContainer
-            resort={this.props.resort}
-            closeModal={this.closeModal} />
-        </Modal>
-        {this.renderEvents()}
-        <Modal
-          isOpen={this.state.eventModalOpen}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-          contentLabel="Event Modal">
-          <EventDetailContainer
-            event={passEvent}
-            resort={this.props.resort} />
-        </Modal>
+          <h1 className="event-header">
+            {this.renderResortName()}
+          </h1>
+          <div className="resort-events-container">
+          <Modal
+            isOpen={this.state.createModalOpen}
+            onRequestClose={this.closeModal}
+            style={customStyles}
+            contentLabel="Event Modal">
+            <HostFormContainer
+              resortId={this.props.resortId}
+              closeModal={this.closeModal} />
+          </Modal>
+          {this.renderEvents()}
+          <Modal
+            isOpen={this.state.eventModalOpen}
+            onRequestClose={this.closeModal}
+            style={customStyles}
+            contentLabel="Event Modal">
+            <EventDetailContainer
+              event={passEvent}
+              resort={this.props.resort}
+              closeModal={this.closeModal} />
+          </Modal>
+        </div>
       </div>
     );
   }

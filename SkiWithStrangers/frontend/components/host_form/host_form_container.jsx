@@ -6,7 +6,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return ({
     currentUser: state.session.currentUser,
-    resort: ownProps.resort
+    resortId: ownProps.resortId
   });
 };
 

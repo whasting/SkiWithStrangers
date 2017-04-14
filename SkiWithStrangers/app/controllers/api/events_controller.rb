@@ -1,6 +1,6 @@
 class Api::EventsController < ApplicationController
   def index
-    @events = Event.all.includes(:users)
+    @events = Event.filter(params).includes(:users)
   end
 
   def create

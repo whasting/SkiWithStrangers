@@ -11,7 +11,7 @@ class HostForm extends React.Component {
       date: "",
       capacity: "",
       host_id: parseInt(this.props.currentUser.id),
-      resort_id: parseInt(this.props.resort.id)
+      resort_id: this.props.resortId
     };
 
     this.renderForm = this.renderForm.bind(this);
@@ -25,9 +25,9 @@ class HostForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createEvent(this.state)
-      .then(() => hashHistory.replace(`/resorts/${this.props.resort.id}`))
-      .then(() => this.props.receiveEvents())
-      .then(this.props.closeModal());
+      .then(() => hashHistory.replace(`/resorts/${this.props.resort.id}`));
+    this.props.receiveEvents();
+    this.props.closeModal();
   }
 
   renderForm() {

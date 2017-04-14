@@ -4,11 +4,11 @@ export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
 export const RECEIVE_EVENT = 'RECEIVE_EVENT';
 export const DELETE_EVENT = 'DELETE_EVENT';
 export const CLEAR_EVENT = 'CLEAR_EVENT';
-
+export const CLEAR_EVENTS = 'CLEAR_EVENTS';
 //thunk
 
-export const receiveEvents = () => dispatch => (
-  APIUtil.receiveEvents()
+export const receiveEvents = (resortId) => dispatch => (
+  APIUtil.receiveEvents(resortId)
     .then(events => dispatch(fetchEvents(events)))
 );
 
@@ -46,5 +46,10 @@ export const fetchEvent = event => ({
 
 export const clearEvent = event => ({
   type: CLEAR_EVENT,
+  event
+});
+
+export const clearEvents = events => ({
+  type: CLEAR_EVENTS,
   event
 });

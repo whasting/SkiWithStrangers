@@ -14,7 +14,7 @@ class Api::ResortsController < ApplicationController
   end
 
   def show
-    @resort = Resort.find(params[:id])
+    @resort = Resort.includes(:events).find(params[:id])
     if @resort
       render 'api/resorts/show'
     else
