@@ -1,10 +1,10 @@
 class Api::EventsController < ApplicationController
   def index
-    @events = Event.all.includes(:users)
+    @events = Event.filter(params).includes(:users)
   end
 
   def create
-    @event = Event.new(event_params).includes(:users)
+    @event = Event.new(event_params)
     if @event.save
       render 'api/events/show'
     else
@@ -43,6 +43,6 @@ class Api::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permite(:title, :body, :date, :capacity, :resort_id, :host_id)
+    params.require(:event).permit(:title, :body, :date, :capacity, :resort_id, :host_id)
   end
 end

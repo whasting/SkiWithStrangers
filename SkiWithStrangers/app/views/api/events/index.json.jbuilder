@@ -1,16 +1,11 @@
 @events.each do |event|
   json.set! event.id do
-    json.extract! event, :id, :title, :body, :date, :resort_id, :capacity
+    json.extract! event, :id, :title, :body, :date, :capacity, :resort_id, :host_id
     json.set! "guests" do
-      event.users.each do |user|
-        json.set! user.id do
-          json.extract! user, :id, :username, :name
-          user.attendances.each do |attendance|
-            if attendance.event_id == event.id
-              json.extract! attendance, :waitlist
-            end
-          end
-        end
+      json.array! event.attendances do |attendance|
+        json.user_id attendance.user_id
+        json.username attendance.user.username
+        json.waitlist attendance.waitlist
       end
     end
     json.host do

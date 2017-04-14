@@ -91,7 +91,7 @@ class Dashboard extends React.Component {
         eventList.push(userEvent);
       }
     });
-    
+
     if (this.props.events) {
       eventList = eventList.map((userEvent, idx) => {
         let date = userEvent.date.slice(0, 10);

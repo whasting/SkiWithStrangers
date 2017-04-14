@@ -1,15 +1,39 @@
 import React from 'react';
-import { Link, hashHistory } from 'react-router';
+import { Link, hashHistory, withRouter } from 'react-router';
 import moment from 'moment';
 import { selectGuests } from '../../reducers/selectors';
 import AttendanceFormContainer from '../events/attendance_form_container';
 import EventsContainer from '../events/events_container';
+import values from 'lodash/values';
 
 class ResortsDetail extends React.Component {
   constructor(props) {
     super(props);
 
     this.renderResort = this.renderResort.bind(this);
+  }
+
+  componentWillMount() {
+    if (this.props.location.pathname !== `/resorts/${this.props.resortId}`){
+      hashHistory.replace(`/resorts/${this.props.resortId}`);
+    }
+    this.props.clearResort(null);
+  }
+
+  componentDidMount() {
+    this.props.receiveResort(this.props.resortId);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.resortId !== this.props.resortId) {
+      this.props.clearResort(null);
+      this.props.receiveResort(newProps.resortId);
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.clearResort(null);
+    this.props.clearEvents(null);
   }
 
   renderResort() {
@@ -20,7 +44,7 @@ class ResortsDetail extends React.Component {
             <div className="resort-logo">
               <img
                 className={`resort-logo-img`}
-                src={this.props.resort.resort_logo_url} />
+                src={this.props.resortLogo} />
             </div>
           </div>
           <div className="resort-address">
@@ -35,13 +59,20 @@ class ResortsDetail extends React.Component {
   }
 
   render() {
-    return (
-      <div className="resorts-detail-wrapper">
-        {this.renderResort()}
-        <EventsContainer resort={this.props.resort} />
-      </div>
-    );
+    if (this.props.resort) {
+      return (
+        <div className="resorts-detail-wrapper">
+          {this.renderResort()}
+          <EventsContainer
+            resortId={parseInt(this.props.resortId)}
+            resortName={this.props.resort.name}
+            wait={this.props.wait}/>
+        </div>
+      );
+    } else {
+      return <div className="resorts-detail-wrapper"></div>;
+    }
   }
 }
 
-export default ResortsDetail;
+export default withRouter(ResortsDetail);

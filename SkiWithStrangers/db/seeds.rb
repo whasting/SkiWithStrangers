@@ -48,7 +48,7 @@ First skiing or snowboarding trip to Tahoe? Just learning? Boreal Ski Resort is 
 
 r2 = Resort.create(
   name: 'Heavenly',
-  description: "Overlooking the sapphire-blue waters of Lake Tahoe, Heavenly ski resort is one of the most unique snowsports destinations on the planet. With a higher elevation and the most skiable terrain in Tahoe, you have more hidden glades to explore and groomers to rip than any Lake Tahoe resort. Off the slopes you’ll find more activities and après ski choices than you know what to do with.",
+  description: "Heavenly is for those who are up for first chair and are still going strong well after last call. With 4,800 acres full of off-the-grid terrain and the most incredible views of Lake Tahoe, you can go big and forge your own path. It’s so big, you can ski two states in one day. With 34 miles of wide-open groomed cruisers, 1,600 foot plunges in the double-black-diamond canyons, and the most outrageous tree skiing in North America, the choices are endless. When the sun goes down, kick off your evening with Unbuckle at Tamarack Lodge, offering half-priced drinks, live DJs, dancing and the Heavenly Angels- all at 9,150 feet! Don’t miss The DJ Cat, Heavenly’s custom-built mobile DJ station on the back of a snow cat, which brings the party to the slopes with 52 high-output speakers and 1,200 watts of power. ",
   address: '4080 Lake Tahoe Blvd, South Lake Tahoe, CA 96150',
   resort_logo_url: 'https://res.cloudinary.com/whasting/image/upload/c_scale,h_75,w_225/v1489776231/heavenly-logo_m0rotq.png')
 

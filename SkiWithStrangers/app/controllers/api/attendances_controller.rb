@@ -1,6 +1,6 @@
 class Api::AttendancesController < ApplicationController
   def index
-    @attendances = Attendance.all
+    @attendances = Attendance.includes(:user).all
   end
 
   def create

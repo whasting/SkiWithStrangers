@@ -15,6 +15,7 @@ class EventDetail extends React.Component {
     };
 
     this.renderEvent = this.renderEvent.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentWillMount() {
@@ -40,6 +41,10 @@ class EventDetail extends React.Component {
     this.props.clearEvent({});
   }
 
+  handleDelete(eventId) {
+    this.props.deleteEvent(eventId);
+  }
+
   renderEvent(currentEvent) {
 
     let date = currentEvent.date.slice(0, 10);
@@ -58,9 +63,21 @@ class EventDetail extends React.Component {
 
     let spotsLeft = currentEvent.capacity - numGuests;
 
+    let isHost = "";
+
+    if (currentEvent.host_id === this.props.currentUser.id) {
+      console.log("IN");
+      isHost = (
+        <button
+          onClick={this.handleDelete(currentEvent.id)}
+          className="is-host">Delete Event</button>
+      );
+    }
+
     return (
       <div className="event-sign-up">
         <p className="event-detail-title">{currentEvent.title}</p>
+        {isHost}
         <div className="event-detail-host">
           <div className="date">
             <p className="event-detail-date">{dayName} {newDate}</p>

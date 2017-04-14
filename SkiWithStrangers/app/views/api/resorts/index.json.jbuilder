@@ -1,6 +1,6 @@
 @resorts.each do |resort|
   json.set! resort.id do
-    json.extract! resort, :id, :name, :address, :description, :resort_logo_url
+    json.extract! resort, :id, :name, :resort_logo_url
   end
 end
 

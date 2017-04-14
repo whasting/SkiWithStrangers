@@ -1,6 +1,7 @@
 import { RECEIVE_RESORT,
          DELETE_RESORT,
-         RECEIVE_ATTENDANCE } from '../actions/resort_actions';
+         RECEIVE_ATTENDANCE,
+         CLEAR_RESORT } from '../actions/resort_actions';
 import merge from 'lodash/merge';
 
 const ResortReducer = (state = {}, action) => {
@@ -8,9 +9,9 @@ const ResortReducer = (state = {}, action) => {
   let newState;
   switch (action.type) {
     case RECEIVE_RESORT:
-      newState = merge({});
-      newState[action.resort.id] = action.resort;
-      return newState;
+      return merge({}, state, action.resort);
+    case CLEAR_RESORT:
+      return merge({}, state, action.resort);
     case DELETE_RESORT:
       newState = merge({}, state);
       delete newState[action.resort.id];
