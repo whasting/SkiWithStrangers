@@ -85,7 +85,7 @@ class Events extends React.Component {
   }
 
   closeModal() {
-    hashHistory.replace(`/resorts/${this.props.params.id[0]}`);
+    hashHistory.replace(`/resorts/${this.props.resortId}`);
     this.setState({eventModalOpen: false, createModalOpen: false, event: {}});
   }
 
@@ -112,8 +112,6 @@ class Events extends React.Component {
 
         numGuests =
           event.guests.filter(guest => guest.waitlist === false).length;
-
-        console.log(numGuests);
 
         let spotsLeft = event.capacity - numGuests;
         let waitList = spotsLeft ? "" : "-waitlist";

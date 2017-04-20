@@ -66,7 +66,6 @@ class EventDetail extends React.Component {
     let isHost = "";
 
     if (currentEvent.host_id === this.props.currentUser.id) {
-      console.log("IN");
       isHost = (
         <button
           onClick={this.handleDelete(currentEvent.id)}
