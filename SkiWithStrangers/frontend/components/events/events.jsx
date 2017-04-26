@@ -17,6 +17,7 @@ const customStyles = {
   content: {
     top: '50%',
     left: '50%',
+    height: '600px',
     right: 'auto',
     transform: 'translate(-50%, -50%)',
     padding: '2px',
@@ -69,11 +70,15 @@ class Events extends React.Component {
       this.props.clearEvents(null);
       this.props.receiveEvents(newProps.resortId);
     }
+
     if (this.props.attendances !== newProps.attendances) {
+      // this.props.receiveEvents(this.props.resortId);
       this.props = newProps;
-      this.setState({attendances: this.props.attendances});
     }
 
+    if (this.props.events !== newProps.events) {
+      console.log("NEW EVENTS");
+    }
   }
 
   openEventModal() {
@@ -101,6 +106,7 @@ class Events extends React.Component {
 
   renderEvents() {
     let resortEvents;
+
     if (this.props.events) {
       resortEvents = selectEvents(this.props);
 

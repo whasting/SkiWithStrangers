@@ -42,7 +42,8 @@ class AttendanceForm extends React.Component {
     this.props.createAttendance({
       user_id: userId,
       event_id: eventId,
-      waitlist: waitListed});
+      waitlist: waitListed})
+      .then(() => this.props.receiveEvents(this.props.params.id[0]));
   }
 
   handleWaitlistSubmit(e) {
@@ -66,7 +67,8 @@ class AttendanceForm extends React.Component {
     selectAttendances(this.props).forEach(attendance => {
       if (attendance.user_id === this.state.user_id &&
           attendance.event_id === this.state.event_id) {
-        this.props.deleteAttendance(attendance.id);
+        this.props.deleteAttendance(attendance.id)
+          .then(() => this.props.receiveEvents(this.props.params.id[0]));
       }
     });
 
