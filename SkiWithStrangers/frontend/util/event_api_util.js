@@ -1,8 +1,11 @@
-export const receiveEvents = (resort_id = -1) => (
+export const receiveEvents = (resortId = -1, userId = -1) => (
   $.ajax({
     method: 'GET',
     url: 'api/events',
-    data: {resort_id}
+    data: {
+      resort_id: resortId,
+      user_id: userId
+    }
   })
 );
 

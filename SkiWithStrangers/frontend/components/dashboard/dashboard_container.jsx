@@ -14,8 +14,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  receiveEvents: () => dispatch(receiveEvents()),
-  receiveAttendances: () => dispatch(receiveAttendances())
+  receiveEvents: (resortId, userId) => (
+    dispatch(receiveEvents(resortId, userId))
+  ),
+  receiveAttendances: id => dispatch(receiveAttendances(id))
 });
 
 export default connect(

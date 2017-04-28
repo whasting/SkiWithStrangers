@@ -18,9 +18,6 @@ class ResortsDetail extends React.Component {
       hashHistory.replace(`/resorts/${this.props.resortId}`);
     }
     this.props.clearResort(null);
-  }
-
-  componentDidMount() {
     this.props.receiveResort(this.props.resortId);
   }
 
@@ -65,8 +62,7 @@ class ResortsDetail extends React.Component {
           {this.renderResort()}
           <EventsContainer
             resortId={parseInt(this.props.resortId)}
-            resortName={this.props.resort.name}
-            wait={this.props.wait}/>
+            resortName={this.props.resort.name} />
         </div>
       );
     } else {

@@ -1,7 +1,8 @@
-export const receiveAttendances = () => (
+export const receiveAttendances = (userId = -1) => (
   $.ajax({
     method: 'GET',
-    url: '/api/attendances'
+    url: '/api/attendances',
+    data: {user_id: userId}
   })
 );
 
@@ -35,9 +36,13 @@ export const updateAttendance = attendance => (
   })
 );
 
-export const deleteAttendance = id => (
+export const deleteAttendance = (userId, eventId) => (
   $.ajax({
     method: 'DELETE',
-    url: `/api/attendances/${id}`
+    url: `/api/attendances/`,
+    data: {
+      user_id: userId,
+      event_id: eventId
+    }
   })
 );

@@ -46,55 +46,61 @@ class EventDetail extends React.Component {
   }
 
   renderEvent(currentEvent) {
+    if (currentEvent) {
+      let date = currentEvent.date.slice(0, 10);
+      let dayName = moment(date).format("dddd");
+      let newDate = moment(date).format("MMMM Do YYYY");
+      let numGuests = 0;
 
-    let date = currentEvent.date.slice(0, 10);
-    let dayName = moment(date).format("dddd");
-    let newDate = moment(date).format("MMMM Do YYYY");
-    let numGuests = 0;
-
-    if (this.state.attendances) {
-      for (let attendanceId in this.state.attendances) {
-        if(currentEvent.id === this.state.attendances[attendanceId].event_id &&
-           this.state.attendances[attendanceId].waitlist === false) {
-          numGuests = numGuests + 1;
-        }
+      if (currentEvent.guests) {
+        let guests = currentEvent.guests;
+        numGuests =
+          guests.filter(guest => guest.waitlist === false).length;
       }
-    }
 
-    let spotsLeft = currentEvent.capacity - numGuests;
+      let spotsLeft = currentEvent.capacity - numGuests;
 
-    let isHost = "";
+      let isHost = "";
 
-    if (currentEvent.host_id === this.props.currentUser.id) {
-      isHost = (
-        <button
-          onClick={this.handleDelete(currentEvent.id)}
-          className="is-host">Delete Event</button>
+      if (currentEvent.host_id === this.props.currentUser.id) {
+        isHost = (
+          <button
+            onClick={this.handleDelete(currentEvent.id)}
+            className="is-host">Delete Event</button>
+        );
+      }
+
+      return (
+        <div className="event-sign-up">
+          <p className="event-detail-title">{currentEvent.title}</p>
+          {isHost}
+          <div className="event-detail-host">
+            <div className="date">
+              <p className="event-detail-date">{dayName} {newDate}</p>
+              <p className="event-body">{currentEvent.body}</p>
+            </div>
+            <div className="detail-host-info">
+              <p className="event-host-name">{currentEvent.host.name}</p>
+              <img className="host-mini" src={currentEvent.host.photo_url}></img>
+            </div>
+          </div>
+          <p className="spots-left-detail">{spotsLeft} Spots Left!</p>
+          <div className="guests-and-form">
+            <AttendanceFormContainer
+              event={currentEvent}
+              fetchNewGuests={this.fetchNewGuests}
+              resortId={this.props.resortId}
+              userId={this.props.userId}
+              closeModal={this.props.closeModal} />
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="event-sign-up">
+        </div>
       );
     }
-
-    return (
-      <div className="event-sign-up">
-        <p className="event-detail-title">{currentEvent.title}</p>
-        {isHost}
-        <div className="event-detail-host">
-          <div className="date">
-            <p className="event-detail-date">{dayName} {newDate}</p>
-            <p className="event-body">{currentEvent.body}</p>
-          </div>
-          <div className="detail-host-info">
-            <p className="event-host-name">{currentEvent.host.name}</p>
-            <img className="host-mini" src={currentEvent.host.photo_url}></img>
-          </div>
-        </div>
-        <p className="spots-left-detail">{spotsLeft} Spots Left!</p>
-        <div className="guests-and-form">
-          <AttendanceFormContainer
-            event={currentEvent}
-            fetchNewGuests={this.fetchNewGuests} />
-        </div>
-      </div>
-    );
   }
 
   render() {

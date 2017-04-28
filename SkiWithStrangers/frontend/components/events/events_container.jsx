@@ -10,18 +10,24 @@ import { selectEvents,
          selectAttendances } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
+  let resortId = ownProps.resortId ? ownProps.resortId : -1;
+  let userId = ownProps.userId ? ownProps.userId : -1;
+
   return ({
   events: state.events,
   event: selectEvent(state),
   attendances:  selectAttendances(state),
   currentUser: state.session.currentUser,
-  resortId: ownProps.resortId,
+  resortId: resortId,
+  userId: userId,
   resortName: ownProps.resortName,
   wait: ownProps.wait
 });};
 
 const mapDispatchToProps = (dispatch) => ({
-  receiveEvents: resortId => dispatch(receiveEvents(resortId)),
+  receiveEvents: (resortId, userId) => (
+    dispatch(receiveEvents(resortId, userId))
+  ),
   receiveEvent: id => dispatch(receiveEvent(id)),
   clearEvents: events => dispatch(clearEvents(events)),
   receiveAttendances: () => dispatch(receiveAttendances())

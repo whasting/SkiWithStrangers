@@ -41,6 +41,8 @@ class Events extends React.Component {
       attendances: this.props.attendances
     };
 
+    this.previousPath = this.props.location.pathname;
+
     this.renderEvents = this.renderEvents.bind(this);
     this.renderResortName = this.renderResortName.bind(this);
     this.openEventModal = this.openEventModal.bind(this);
@@ -57,7 +59,8 @@ class Events extends React.Component {
   }
 
   componentDidMount() {
-    this.props.receiveEvents(this.props.resortId);
+    this.props.clearEvents(null);
+    this.props.receiveEvents(this.props.resortId, this.props.userId);
     this.props.receiveAttendances();
   }
 
@@ -68,16 +71,12 @@ class Events extends React.Component {
   componentWillReceiveProps(newProps) {
     if (this.props.resortId !== newProps.resortId) {
       this.props.clearEvents(null);
-      this.props.receiveEvents(newProps.resortId);
-    }
-
-    if (this.props.attendances !== newProps.attendances) {
-      // this.props.receiveEvents(this.props.resortId);
-      this.props = newProps;
+      this.previousPath = newProps.location.pathname;
+      this.props.receiveEvents(newProps.resortId, this.props.userId);
     }
 
     if (this.props.events !== newProps.events) {
-      console.log("NEW EVENTS");
+      this.props = newProps;
     }
   }
 
@@ -90,15 +89,21 @@ class Events extends React.Component {
   }
 
   closeModal() {
-    hashHistory.replace(`/resorts/${this.props.resortId}`);
+    hashHistory.replace(this.previousPath);
     this.setState({eventModalOpen: false, createModalOpen: false, event: {}});
   }
 
   renderResortName() {
-    if (this.props.resortId) {
+    if (this.props.resortName) {
       return (
         <div className="events-header">
           Events at {this.props.resortName}
+        </div>
+      );
+    } else {
+      return (
+        <div className="events-header">
+          Events You've Signed Up For
         </div>
       );
     }
@@ -106,7 +111,6 @@ class Events extends React.Component {
 
   renderEvents() {
     let resortEvents;
-
     if (this.props.events) {
       resortEvents = selectEvents(this.props);
 
@@ -122,10 +126,11 @@ class Events extends React.Component {
         let spotsLeft = event.capacity - numGuests;
         let waitList = spotsLeft ? "" : "-waitlist";
 
-        if (this.props.resortId === event.resort_id) {
-          return (
+
+
+        return (
           <Link
-            to={`/resorts/${this.props.resortId}/event/${event.id}`}
+            to={`${this.props.location.pathname}/event/${event.id}`}
             key={idx}
             className={`event-item${waitList} ${event.id}`}
             onClick={this.openEventModal}>
@@ -142,7 +147,7 @@ class Events extends React.Component {
             <p className="event-item-title">{event.title}</p>
             <p className="spots-left">{spotsLeft} Spots Left!</p>
           </Link>
-        );}
+        );
       });
     }
 
@@ -168,9 +173,8 @@ class Events extends React.Component {
     if (Array.isArray(this.props.params.id)) {
       passEvent = this.props.events[this.props.params.id[1]];
     } else {
-      passEvent = "";
+      passEvent = this.props.events[this.props.params.id];
     }
-
 
     return (
       <div className="resort-events-detail">
@@ -196,6 +200,9 @@ class Events extends React.Component {
             <EventDetailContainer
               event={passEvent}
               resort={this.props.resort}
+              closeModal={this.closeModal}
+              resortId={this.props.resortId}
+              userId={this.props.userId}
               closeModal={this.closeModal} />
           </Modal>
         </div>

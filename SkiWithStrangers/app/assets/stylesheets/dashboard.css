@@ -4,8 +4,9 @@
   background-color: rgba(110, 158, 212, .7);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   overflow-y: scroll;
+  padding-top: 30px;
 }
 
 .dashboard-events-detail {

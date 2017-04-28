@@ -24,11 +24,8 @@ class AttendanceForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.props.attendance !== newProps.attendance) {
-      this.props.receiveAttendances();
-    }
-
-    if (this.props.guests !== newProps.guests) {
+    if ((this.props.guests !== newProps.guests) ||
+        (this.props.attendance !== newProps.attendance)) {
       this.props = newProps;
     }
   }
@@ -43,7 +40,7 @@ class AttendanceForm extends React.Component {
       user_id: userId,
       event_id: eventId,
       waitlist: waitListed})
-      .then(() => this.props.receiveEvents(this.props.params.id[0]));
+      .then(() => this.props.receiveEvents(this.props.event.resort_id));
   }
 
   handleWaitlistSubmit(e) {
@@ -56,7 +53,8 @@ class AttendanceForm extends React.Component {
     this.props.createAttendance({
       user_id: userId,
       event_id: eventId,
-      waitlist: waitListed});
+      waitlist: waitListed}
+    );
 
     this.setState({waitlist: true, joined: true});
   }
@@ -64,24 +62,28 @@ class AttendanceForm extends React.Component {
   handleRemoveAttendance(e) {
     e.preventDefault();
 
-    selectAttendances(this.props).forEach(attendance => {
-      if (attendance.user_id === this.state.user_id &&
-          attendance.event_id === this.state.event_id) {
-        this.props.deleteAttendance(attendance.id)
-          .then(() => this.props.receiveEvents(this.props.params.id[0]));
-      }
-    });
-
-    this.props.receiveAttendances();
-    this.props.receiveEvent(this.state.event_id);
+    if (this.props.location.pathname !== `/dashboard/event/${this.props.event.id}`) {
+      this.props
+      .deleteAttendance(this.props.currentUser.id, this.props.event.id)
+      .then(() => (
+        this.props.receiveEvents(this.props.resortId, this.props.userId)))
+      .then(events => events);
+    } else {
+      this.props
+      .deleteAttendance(this.props.currentUser.id, this.props.event.id)
+      .then(() => (
+        this.props.receiveEvents(this.props.resortId, this.props.userId)))
+      .then(() => this.props.closeModal());
+    }
   }
 
   renderForm() {
     let currentUserAttending = this.props.guestJoin;
     let currentUserWaitlisted = false;
 
-    this.props.guests.forEach(guest => {
-      if (currentUserAttending) {
+    this.props.event.guests.forEach(guest => {
+      if (guest.user_id === this.props.currentUser.id) {
+        currentUserAttending = true;
         currentUserWaitlisted = guest.waitlist;
       }
     });
@@ -92,14 +94,9 @@ class AttendanceForm extends React.Component {
 
       let numGuests = 0;
       if (this.props.event.guests) {
-        for (let attendanceId in this.props.attendances) {
-          if (this.props.attendances[attendanceId].user_id === this.state.user_id &&
-              this.props.attendances[attendanceId].event_id === this.state.event_id &&
-              this.props.attendances[attendanceId].waitlist === false) {
-
-            numGuests = numGuests + 1;
-          }
-        }
+        let guests = this.props.event.guests;
+        numGuests =
+          guests.filter(guest => guest.waitlist === false).length;
       }
 
       let availableSpots = this.props.event.capacity - numGuests;
@@ -149,6 +146,7 @@ class AttendanceForm extends React.Component {
     } else {
       title = <h1 className="joined-message">You Have Joined This Event!</h1>;
     }
+
     return (
       <div className="join-message">
         {title}

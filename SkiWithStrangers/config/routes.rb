@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     resources :events, except: [:new, :edit]
     resources :attendances, except: [:new, :edit]
   end
+
+  match 'api/attendances' => 'api/attendances#destroy', via: :delete
 end

@@ -46,21 +46,26 @@ const Root = ({ store }) => {
             onEnter={_ensureLoggedIn}>
             <Route
               path='/resorts/:id'
-              component={ ResortsDetailContainer }>
+              component={ ResortsDetailContainer }
+              onEnter={_ensureLoggedIn}>
               <Route
                 path='/resorts/:id/event/:id'
-                component={ EventsContainer } />
+                component={ EventsContainer }
+                onEnter={_ensureLoggedIn} />
               <Route
                 path='/resorts/:id/create-event'
-                component={ HostFormContainer } />
+                component={ HostFormContainer }
+                onEnter={_ensureLoggedIn} />
             </ Route>
           </ Route>
           <Route
             path='/dashboard'
-            component={ DashboardContainer } >
+            component={ DashboardContainer }
+            onEnter={_ensureLoggedIn} >
             <Route
               path='/dashboard/event/:id'
-              component={ EventDetailContainer } />
+              component={ EventsContainer }
+              onEnter={_ensureLoggedIn} />
           </ Route>
         </ Route>
       </Router>

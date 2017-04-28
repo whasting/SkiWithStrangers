@@ -5,8 +5,8 @@ export const RECEIVE_ATTENDANCE = 'RECEIVE_ATTENDANCE';
 export const DELETE_ATTENDANCE = 'DELETE_ATTENDANCE';
 
 //thunk
-export const receiveAttendances = () => dispatch => (
-  APIUtil.receiveAttendances()
+export const receiveAttendances = (userId) => dispatch => (
+  APIUtil.receiveAttendances(userId)
     .then(attendances => dispatch(fetchAttendances(attendances)))
 );
 
@@ -25,8 +25,8 @@ export const updateAttendance = attendance => dispatch => (
     .then(updatedAttendance => dispatch(fetchAttendance(updatedAttendance)))
 );
 
-export const deleteAttendance = id => dispatch => (
-  APIUtil.deleteAttendance(id)
+export const deleteAttendance = (userId, eventId) => dispatch => (
+  APIUtil.deleteAttendance(userId, eventId)
     .then(attendance => dispatch(removeAttendance(attendance)))
 );
 

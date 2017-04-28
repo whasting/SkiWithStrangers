@@ -7,8 +7,8 @@ export const CLEAR_EVENT = 'CLEAR_EVENT';
 export const CLEAR_EVENTS = 'CLEAR_EVENTS';
 //thunk
 
-export const receiveEvents = (resortId) => dispatch => (
-  APIUtil.receiveEvents(resortId)
+export const receiveEvents = (resortId, userId) => dispatch => (
+  APIUtil.receiveEvents(resortId, userId)
     .then(events => dispatch(fetchEvents(events)))
 );
 

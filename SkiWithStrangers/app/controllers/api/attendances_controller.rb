@@ -1,6 +1,6 @@
 class Api::AttendancesController < ApplicationController
   def index
-    @attendances = Attendance.includes(:user).all
+    @attendances = Attendance.filter(params).includes(:user)
   end
 
   def create
@@ -33,7 +33,12 @@ class Api::AttendancesController < ApplicationController
   end
 
   def destroy
-    @attendance = Attendance.find(params[:id])
+    @attendance = Attendance.where(
+      "user_id = ? and event_id = ?",
+      params[:user_id],
+      params[:event_id]
+    ).first
+    p @attendance
     if @attendance && @attendance.destroy
       render 'api/attendances/show'
     elsif @attendance
