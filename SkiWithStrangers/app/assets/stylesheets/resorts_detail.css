@@ -31,10 +31,10 @@
 }
 
 .resorts-landing {
-  height: 50%;
+  height: auto;
   width: 400px;
   background-color: rgba(255, 255, 255, 0.75);
-  padding: 15px 15px 40px 15px;
+  padding: 40px 15px 40px 15px;
   border: 2px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   display: flex;
@@ -46,6 +46,13 @@
 
 h1.event-item-title {
   width: auto;
+  margin: -10px 0 15px 0;
+
+}
+
+h1.event-item-title.entry {
+  width: auto;
+  margin-bottom: 40px;
 }
 
 .resort-detail {
@@ -54,7 +61,7 @@ h1.event-item-title {
   height: auto;
   min-height: auto;
   margin: 30px 0;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.90);
   padding: 15px 15px 40px 15px;
   border: 2px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -195,6 +202,18 @@ a.event-item-waitlist:hover {
   font-size: 20px;
   width: 200px;
   margin: auto;
+}
+
+.plus {
+  width: auto;
+  height: auto;
+  margin: 10px 0 29.75px 0;
+}
+
+.arrow {
+  width: auto;
+  height: auto;
+  margin: -45px 0 10px 0;
 }
 
 .event-item-host {

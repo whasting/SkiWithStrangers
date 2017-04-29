@@ -17,7 +17,7 @@ const customStyles = {
   content: {
     top: '50%',
     left: '50%',
-    height: '600px',
+    minHeight: '57%',
     right: 'auto',
     transform: 'translate(-50%, -50%)',
     padding: '2px',
@@ -151,15 +151,27 @@ class Events extends React.Component {
       });
     }
 
-    resortEvents.push(
-      <Link
-        to={`resorts/${this.props.resortId}/create-event`}
-        key="create-event"
-        onClick={this.openCreateModal}
-        className='event-item-join'>
-        <h1 className="event-item-title">Create Event</h1>
-      </Link>
-    );
+    if (this.props.location.pathname.slice(0, 10) === '/dashboard') {
+      resortEvents.push(
+        <Link
+          to={`/resorts`}
+          key="move-to-resorts"
+          className='event-item-join'>
+            <h1 className="event-item-title">Join or Create Events!</h1>
+        </Link>
+      );
+    } else {
+      resortEvents.push(
+        <Link
+          to={`resorts/${this.props.resortId}/create-event`}
+          key="create-event"
+          onClick={this.openCreateModal}
+          className='event-item-join'>
+          <h1 className="event-item-title">Create Event</h1>
+          <img className="plus" src="http://res.cloudinary.com/whasting/image/upload/v1493418928/add_vftw9b.png"></img>
+        </Link>
+      );
+    }
 
     return (
       <div className="resort-events">
@@ -189,6 +201,7 @@ class Events extends React.Component {
             contentLabel="Event Modal">
             <HostFormContainer
               resortId={this.props.resortId}
+              userId={this.props.userId}
               closeModal={this.closeModal} />
           </Modal>
           {this.renderEvents()}
@@ -200,7 +213,6 @@ class Events extends React.Component {
             <EventDetailContainer
               event={passEvent}
               resort={this.props.resort}
-              closeModal={this.closeModal}
               resortId={this.props.resortId}
               userId={this.props.userId}
               closeModal={this.closeModal} />

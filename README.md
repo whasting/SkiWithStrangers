@@ -1,72 +1,63 @@
-[Heroku link][heroku]
+# SkiWithStrangers
 
-[Trello link][trello]
+[SkiWithStrangers live][heroku]
 
 [heroku]: https://ski-with-strangers.herokuapp.com/#/
-[trello]: https://trello.com/b/bFP1uT8F/skiwithstrangers
 
-## Minimum Viable Product
-SkiWithStrangers is a web application inspired by TeaWithStrangers built using Ruby on Rails and React/Redux. Here are the MVPs:
+SkiWithStrangers is a web application based on TeaWithStrangers.
+It was built using Ruby on Rails and React/Redux.
 
-- 1) Hosting on Heroku
-- 2) Production README
-- 3) New account creation, login, and guest/demo login
-- 4) Choose Ski Resort
-- 5) Host Event
-- 6) Join Event for Selected Resort
-- 7) Dashboard of joined events/hosted events
+## Features & Implementation
 
-Bonus: Google Map API showing events based on location
-Bonus: Get weather for ski resorts via API
-Bonus: Get rating for ski resorts via API
-Bonus: Suggestions based on event details and user profiles
+### Dashboard
 
-## Design Docs
-* [View Wireframes][wireframes]
-* [React Components][components]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
-* [Sample State][sample-state]
+The dashboard rendered via the `Dashboard` component is what the user
+sees upon logging in/signing up. It contains the events that the user
+has joined. The user may investigate the events they've
+joined and leave them if they wish.
 
-[wireframes]: docs/wireframes
-[components]: docs/component-hierarchy.md
-[sample-state]: docs/sample-state.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
+![image of dashboard](screenshots/dashboard.png)
 
-## DEVELOPMENT TIMELINE
+### Viewing Events and Resorts
 
-### Phase 1: Backend setup and Front End User Authentication (2 days)
+Resorts and events are stored in two separate tables in the database.
+The resorts table contains the resort's `id`, `name`, `address`, `description`,
+and `logo_url` while the events table contains the event's `id`, `title`,
+`body`, `date`, `capacity`, the related `resort_id`, and `host_id`.
 
-**Objective:** Functioning rails project with front-end Authentication.
+The resorts and events page is rendered in a total of 3 different components:
+1. `ResortsIndex`
+2. `ResortDetail`
+3. `Events`
 
-### Phase 2: Hosts Model, API, and components (2 days)
+On the left is the `ResortsIndex` which displays a list of resort names.
+When a resort name is clicked, it renders the `ResortDetail` for that resort
+as well as the related `Events` to the right in the main area.
 
-**Objective:** Hosts can be created, viewed, edited, and destroyed using the API.
+The UI for the resorts and events page is loosely based off Evernote's
+note UI.
 
-### Phase 3: Resorts Model, API, and components (2 days)
+![image of resorts and event](screenshots/resorts-and-events.png)
 
-**Objective:** Resorts can be created, read, edited, and destroyed using the API.
+### Joining/Leaving Events
 
-### Phase 4: User Location and search sort (1 day)
+Joining events is managed through the use of two components:
 
-**Objective:** User may input their location and resorts are sorted by distance from user location.
+1. `EventDetail`
+2. `AttendanceForm`
 
-### Phase 5: Events Model, API, and components (2 days)
+To join an event, the user must press on an event on the resorts and events
+page or the dashboard. When an event is clicked, `EventDetail` renders
+the appropriate information as well as an `AttendanceForm` used to keep
+track of the users who are attending each event.
 
-**Objective:** Events can be created, read, edited, and destroyed using the API, and joined using the interface.
+The `AttendanceForm` interacts with the attendances join table
+in the back end which contains `id`, `user_id`, and `event_id`.
 
-### Phase 6: Create Dashboard (1 day)
+![image of event detail and join form](screenshots/join-event.png)
 
-**Objective:** Users can view their upcoming and attended events.
+## Work to be Done in the Future
 
-### Phase 7: Get Weather and Rating data via API for Resorts (1 day)
+### Event Creation and Editing
 
-**Objective:** Resorts have weather and rating data when viewing.
-
-### Bonus Features (TBD)
-
-- [ ] Connect Google Maps API
-- [ ] Get weather for ski resorts via API
-- [ ] Get rating for ski resorts via API
-- [ ] Event suggestions based on event details and user profiles
+Create `HostForm` and allow approved users to create events.

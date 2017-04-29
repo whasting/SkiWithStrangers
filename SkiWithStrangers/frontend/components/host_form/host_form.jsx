@@ -24,10 +24,13 @@ class HostForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    
+    let resortId = this.props.resortId;
+    let userId = this.props.userId;
+
     this.props.createEvent(this.state)
-      .then(() => hashHistory.replace(`/resorts/${this.props.resort.id}`));
-    this.props.receiveEvents();
-    this.props.closeModal();
+      .then(() => this.props.receiveEvents(resortId, userId))
+      .then(() => this.props.closeModal());
   }
 
   renderForm() {

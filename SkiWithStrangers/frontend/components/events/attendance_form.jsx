@@ -62,17 +62,23 @@ class AttendanceForm extends React.Component {
   handleRemoveAttendance(e) {
     e.preventDefault();
 
-    if (this.props.location.pathname !== `/dashboard/event/${this.props.event.id}`) {
+    // userId => determines whether the event is being viewed from the
+    //           dashboard or resorts page
+    // currentUserId => The user's actual id
+    let userId = this.props.userId;
+    let currentUserId = this.props.currentUser.id;
+    let resortId = this.props.resortId;
+    let eventId = this.props.event.id;
+
+    if (this.props.location.pathname !== `/dashboard/event/${eventId}`) {
       this.props
-      .deleteAttendance(this.props.currentUser.id, this.props.event.id)
-      .then(() => (
-        this.props.receiveEvents(this.props.resortId, this.props.userId)))
+      .deleteAttendance(currentUserId, eventId)
+      .then(() => this.props.receiveEvents(resortId, userId))
       .then(events => events);
     } else {
       this.props
-      .deleteAttendance(this.props.currentUser.id, this.props.event.id)
-      .then(() => (
-        this.props.receiveEvents(this.props.resortId, this.props.userId)))
+      .deleteAttendance(currentUserId, eventId)
+      .then(() => this.props.receiveEvents(resortId, userId))
       .then(() => this.props.closeModal());
     }
   }
@@ -134,7 +140,7 @@ class AttendanceForm extends React.Component {
           className="user-phone"
           placeholder="Your Phone Number (optional)">
         </input>
-        <button className="event-button">Join Event!</button>
+        <button className="event-button">Join</button>
       </form>
     );
   }

@@ -27,12 +27,6 @@ class Dashboard extends React.Component {
       passEvent = "";
     }
 
-    //   <Link
-    //     to={`/resorts`}
-    //     className='event-item-join'>
-    //       <h1 className="event-item-title">Join an Event!</h1>
-    //   </Link>
-
     if (this.props.currentUser) {
       return (
         <div className="dashboard-container">

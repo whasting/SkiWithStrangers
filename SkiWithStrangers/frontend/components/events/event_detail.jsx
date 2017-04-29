@@ -16,6 +16,7 @@ class EventDetail extends React.Component {
 
     this.renderEvent = this.renderEvent.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   componentWillMount() {
@@ -41,8 +42,21 @@ class EventDetail extends React.Component {
     this.props.clearEvent({});
   }
 
-  handleDelete(eventId) {
-    this.props.deleteEvent(eventId);
+  handleDelete(e) {
+    e.preventDefault();
+
+    let userId = this.props.userId;
+    let resortId = this.props.resortId;
+
+    this.props.deleteEvent(this.props.event.id)
+      .then(() => this.props.receiveEvents(resortId, userId))
+      .then(() => this.props.closeModal());
+  }
+
+  handleUpdate(e) {
+    e.preventDefault();
+
+
   }
 
   renderEvent(currentEvent) {
@@ -60,20 +74,35 @@ class EventDetail extends React.Component {
 
       let spotsLeft = currentEvent.capacity - numGuests;
 
-      let isHost = "";
+      let guestOrHost = "";
 
       if (currentEvent.host_id === this.props.currentUser.id) {
-        isHost = (
-          <button
-            onClick={this.handleDelete(currentEvent.id)}
-            className="is-host">Delete Event</button>
+        guestOrHost = (
+          <div className="event-form-wrapper">
+            <h1 className="joined-message">This is Your Event</h1>
+            <button
+              onClick={this.handleUpdate}
+              className="update-event-button">Update</button>
+            <p>-or-</p>
+            <button
+              onClick={this.handleDelete}
+              className="delete-event-button">Delete</button>
+          </div>
+        );
+      } else {
+        guestOrHost = (
+          <AttendanceFormContainer
+            event={currentEvent}
+            fetchNewGuests={this.fetchNewGuests}
+            resortId={this.props.resortId}
+            userId={this.props.userId}
+            closeModal={this.props.closeModal} />
         );
       }
 
       return (
         <div className="event-sign-up">
           <p className="event-detail-title">{currentEvent.title}</p>
-          {isHost}
           <div className="event-detail-host">
             <div className="date">
               <p className="event-detail-date">{dayName} {newDate}</p>
@@ -86,12 +115,7 @@ class EventDetail extends React.Component {
           </div>
           <p className="spots-left-detail">{spotsLeft} Spots Left!</p>
           <div className="guests-and-form">
-            <AttendanceFormContainer
-              event={currentEvent}
-              fetchNewGuests={this.fetchNewGuests}
-              resortId={this.props.resortId}
-              userId={this.props.userId}
-              closeModal={this.props.closeModal} />
+            {guestOrHost}
           </div>
         </div>
       );

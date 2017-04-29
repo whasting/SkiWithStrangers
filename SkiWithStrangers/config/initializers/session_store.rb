@@ -2,4 +2,4 @@
 
 Rails.application.config.session_store :cookie_store,
   key: '_SkiWithStrangers_session',
-  expire_after: 10.minutes
+  expire_after: 20.minutes

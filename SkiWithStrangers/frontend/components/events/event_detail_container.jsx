@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import EventDetail from './event_detail';
 import { receiveEvent,
+         receiveEvents,
          clearEvent,
          deleteEvent,
          updateEvent } from '../../actions/event_actions';
@@ -24,7 +25,10 @@ const mapDispatchToProps = dispatch => ({
   clearEvent: event => dispatch(clearEvent(event)),
   receiveAttendances: () => dispatch(receiveAttendances()),
   deleteEvent: id => dispatch(deleteEvent(id)),
-  updateEvent: event => dispatch(updateEvent(event))
+  updateEvent: event => dispatch(updateEvent(event)),
+  receiveEvents: (resortId, userId) => (
+    dispatch(receiveEvents(resortId, userId))
+  )
 });
 
 export default connect(

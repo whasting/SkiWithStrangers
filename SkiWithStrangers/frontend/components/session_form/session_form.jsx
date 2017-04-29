@@ -45,6 +45,7 @@ class SessionForm extends React.Component {
     this.handleDemo = this.handleDemo.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.renderNav = this.renderNav.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentWillMount() {
@@ -140,6 +141,17 @@ class SessionForm extends React.Component {
     }
   }
 
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      console.log(this.props.formType);
+      if (this.props.formType === 'signup') {
+        this.handleSignup(e);
+      } else {
+        this.handleSubmit(e);
+      }
+    }
+  }
+
   renderErrors() {
     if (this.props.errors) {
       return (
@@ -216,6 +228,7 @@ class SessionForm extends React.Component {
                   type="text"
                   className="signup-username"
                   value={this.state.username}
+                  onKeyPress={this.handleKeyPress}
                   onChange={this.handleChange}
                   placeholder="Username" />
               </div>
@@ -224,12 +237,14 @@ class SessionForm extends React.Component {
                   type="password"
                   className="signup-password"
                   onChange={this.handleChange}
+                  onKeyPress={this.handleKeyPress}
                   value={this.state.password}
                   placeholder="Password" />
                 <input
                   type="password"
                   className="signup-password2"
                   onChange={this.handleChange}
+                  onKeyPress={this.handleKeyPress}
                   value={this.state.password2}
                   placeholder="Re-enter Password" />
               </div>
@@ -244,6 +259,7 @@ class SessionForm extends React.Component {
                 type="submit"
                 className="sign-up-button"
                 onClick={this.handleSignup}
+                onKeyPress={this.handleKeyPress}
                 value="Sign Up" />
               <input
                 type="submit"
@@ -264,6 +280,7 @@ class SessionForm extends React.Component {
                   type="text"
                   className="login-username"
                   value={this.state.username}
+                  onKeyPress={this.handleKeyPress}
                   onChange={this.handleChange}
                   placeholder="Username" />
               </div>
@@ -272,6 +289,7 @@ class SessionForm extends React.Component {
                   type="password"
                   className="login-password"
                   onChange={this.handleChange}
+                  onKeyPress={this.handleKeyPress}
                   value={this.state.password}
                   placeholder="Password" />
               </div>
@@ -285,6 +303,7 @@ class SessionForm extends React.Component {
               <input
                 type="submit"
                 className="log-in-button"
+                onKeyPress={this.handleKeyPress}
                 onClick={this.handleSubmit}
                 value="Log In" />
               <input
