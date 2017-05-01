@@ -16,7 +16,7 @@ sees upon logging in/signing up. It contains the events that the user
 has joined. The user may investigate the events they've
 joined and leave them if they wish.
 
-![image of dashboard](screenshots/dashboard.png)
+![image of dashboard](docs/screenshots/dashboard.png)
 
 ### Viewing Events and Resorts
 
@@ -37,7 +37,7 @@ as well as the related `Events` to the right in the main area.
 The UI for the resorts and events page is loosely based off Evernote's
 note UI.
 
-![image of resorts and event](screenshots/resorts-and-events.png)
+![image of resorts and event](docs/screenshots/resorts-and-events.png)
 
 ### Joining/Leaving Events
 
@@ -54,7 +54,7 @@ track of the users who are attending each event.
 The `AttendanceForm` interacts with the attendances join table
 in the back end which contains `id`, `user_id`, and `event_id`.
 
-![image of event detail and join form](screenshots/join-event.png)
+![image of event detail and join form](docs/screenshots/join-event.png)
 
 ## Work to be Done in the Future
 
