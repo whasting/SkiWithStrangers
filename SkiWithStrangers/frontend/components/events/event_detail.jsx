@@ -56,7 +56,7 @@ class EventDetail extends React.Component {
   handleUpdate(e) {
     e.preventDefault();
 
-
+    this.props.closeModal();
   }
 
   renderEvent(currentEvent) {
