@@ -17,7 +17,8 @@ const mapStateToProps = (state, ownProps) => {
     event: ownProps.event,
     resort: ownProps.resort,
     attendances: state.attendances,
-    closeModal: ownProps.closeModal
+    closeModal: ownProps.closeModal,
+    openCreateModal: ownProps.openCreateModal
 });};
 
 const mapDispatchToProps = dispatch => ({

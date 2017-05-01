@@ -82,7 +82,7 @@ class ResortsIndex extends React.Component {
           <h1 className="event-item-title entry">
             Start by Selecting a Resort.
           </h1>
-          <img className="arrow" src="http://res.cloudinary.com/whasting/image/upload/v1493419521/previous_bx1rqr.png"></img>
+          <img className="arrow" src="https://res.cloudinary.com/whasting/image/upload/v1493419521/previous_bx1rqr.png"></img>
           <Link
             to={`/dashboard`}
             className='event-item-join'>

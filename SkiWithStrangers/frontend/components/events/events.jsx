@@ -168,7 +168,7 @@ class Events extends React.Component {
           onClick={this.openCreateModal}
           className='event-item-join'>
           <h1 className="event-item-title">Create Event</h1>
-          <img className="plus" src="http://res.cloudinary.com/whasting/image/upload/v1493418928/add_vftw9b.png"></img>
+          <img className="plus" src="https://res.cloudinary.com/whasting/image/upload/v1493418928/add_vftw9b.png"></img>
         </Link>
       );
     }
@@ -215,7 +215,8 @@ class Events extends React.Component {
               resort={this.props.resort}
               resortId={this.props.resortId}
               userId={this.props.userId}
-              closeModal={this.closeModal} />
+              closeModal={this.closeModal}
+              openCreateModal={this.openCreateModal} />
           </Modal>
         </div>
       </div>

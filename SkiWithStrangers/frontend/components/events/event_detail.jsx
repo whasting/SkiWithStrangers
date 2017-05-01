@@ -4,6 +4,7 @@ import { selectEvents } from '../../reducers/selectors';
 import moment from 'moment';
 import AttendanceFormContainer from '../events/attendance_form_container';
 import { selectGuests } from '../../reducers/selectors';
+import HostFormContainer from '../host_form/host_form_container';
 
 class EventDetail extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class EventDetail extends React.Component {
 
     this.state = {
       event: this.props.event,
-      attendances: this.props.attendances
+      attendances: this.props.attendances,
+      content: "detail"
     };
 
     this.renderEvent = this.renderEvent.bind(this);
@@ -30,11 +32,6 @@ class EventDetail extends React.Component {
   componentWillReceiveProps(newProps) {
     if (this.props.event !== newProps.event) {
       this.setState({event: newProps.event});
-    }
-
-    if(this.state.attendances !== newProps.attendances) {
-      this.setState({attendances: newProps.attendances});
-      this.props = newProps;
     }
   }
 
@@ -56,7 +53,7 @@ class EventDetail extends React.Component {
   handleUpdate(e) {
     e.preventDefault();
 
-    this.props.closeModal();
+    this.setState({content: "update"});
   }
 
   renderEvent(currentEvent) {
@@ -110,7 +107,9 @@ class EventDetail extends React.Component {
             </div>
             <div className="detail-host-info">
               <p className="event-host-name">{currentEvent.host.name}</p>
-              <img className="host-mini" src={currentEvent.host.photo_url}></img>
+              <img
+                className="host-mini"
+                src={currentEvent.host.photo_url}></img>
             </div>
           </div>
           <p className="spots-left-detail">{spotsLeft} Spots Left!</p>
@@ -128,9 +127,20 @@ class EventDetail extends React.Component {
   }
 
   render() {
-    return (
-      this.renderEvent(this.props.event)
-    );
+    if (this.state.content === "detail"){
+      return (
+        this.renderEvent(this.props.event)
+      );
+    } else {
+      return (
+        <HostFormContainer
+          resortId={this.props.resortId}
+          userId={this.props.userId}
+          closeModal={this.props.closeModal}
+          event={this.state.event}
+          update={true} />
+      );
+    }
   }
 }
 

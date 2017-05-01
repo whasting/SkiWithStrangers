@@ -31,9 +31,13 @@ class Event < ApplicationRecord
     if resort_id == -1 && user_id == -1
       Event.all
     elsif user_id != -1
-      Event
-        .joins(:attendances)
-        .where("attendances.user_id = ?", user_id)
+      result = (Event
+        .joins("LEFT JOIN attendances ON attendances.event_id = events.id")
+        .where("attendances.user_id = ? OR host_id = ?", user_id, user_id))
+      # result.concat(Event
+      #   .where(host_id: user_id))
+      p result
+      result
     elsif resort_id != -1
       Event.where(resort_id: resort_id)
     end
