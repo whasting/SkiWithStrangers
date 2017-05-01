@@ -60,4 +60,5 @@ in the back end which contains `id`, `user_id`, and `event_id`.
 
 ### Event Creation and Editing
 
-Create `HostForm` and allow approved users to create events.
+Integrate with Google Maps Api
+Add separate tabs for joined events and hosted events under dashboard
